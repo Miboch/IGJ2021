@@ -8,19 +8,19 @@ The site layout and scaffolding was prepared in advance to the game jam. This me
 
 No code was written on the actual game prior to the beginning of the game jam.
 
-##CC0
+## CC0
 All code developed in preparation, and during the Game Jam is released in this repository under the Creative Commons license. See [License](https://github.com/Miboch/IGJ2021/blob/main/LICENSE) for details.
 
-##Where can I find the game
+## Where can I find the game
 The most current version of the game can be found ~~[Here](https://tobedecided.com)~~ or on ~~[ITCH.IO](https://itch-url-here.io)~~
 
-##Feature Requests
+## Feature Requests
 If you're someone who is play testing the game during the Game Jam, you can submit feedback directly on the game's page, or by opening an issue in this repository, or by contacting a contributor directly on [Discord](https://discord.gg/Bv8vdChMsv)
 
-##OSS Contributors
+## OSS Contributors
 You can contribute to this project by forking it and submitting a pull-request to the develop branch. If you wish to become a direct contributor contact any of the main contributors directly.
 
-##Project Setup
+## Project Setup
 Complete the following steps to prepare development on your local machine.
 
 ### Prerequisites
