@@ -8,8 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-server": "npm run checkout-main && npm install && ng build --prod && mv ./dist/igj2021/** /var/www/incremental",
-    "checkout-main": "git checkout main && git pull"
+    "build-server": "npm run checkout-main && npm install && npm run cleanup && ng build --prod && mv ./dist/igj2021/** /var/www/incremental",
+    "checkout-main": "git checkout main && git pull",
+    "cleanup": "rm -rf /var/www/incremental/**"
   },
   "private": true,
   "dependencies": {
