@@ -27,12 +27,6 @@ namespace web.lemon.indiedev.io.Controllers
     public string Get()
     {
       var rng = new Random();
-
-      foreach (string key in Environment.GetEnvironmentVariables().Keys)
-      {
-        Console.WriteLine(key);
-      }
-
       return "Key request";
     }
   }

@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="85971528-2687-4d0d-91de-5318aa60eaae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/web.lemon.indiedev.io/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/web.lemon.indiedev.io/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/components/feedback-form/feedback-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/components/feedback-form/feedback-form.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/components/icon-decorator/icon-decorator.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/components/icon-decorator/icon-decorator.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/app/models/feedback.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/models/feedback.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web.lemon.indiedev.io/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/web.lemon.indiedev.io/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +22,7 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/web.lemon.indiedev.io/Controllers/WeatherForecastController.cs" />
+      <option value="$PROJECT_DIR$/web.lemon.indiedev.io/Program.cs" />
     </changedPaths>
   </component>
   <component name="MacroExpansionManager">
@@ -82,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1613600201900</updated>
       <workItem from="1613600223680" duration="95000" />
-      <workItem from="1613674625609" duration="628000" />
+      <workItem from="1613674625609" duration="1345000" />
     </task>
     <servers />
   </component>
