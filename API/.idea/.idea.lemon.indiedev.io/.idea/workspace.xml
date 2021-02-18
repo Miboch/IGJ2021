@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85971528-2687-4d0d-91de-5318aa60eaae" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/web.lemon.indiedev.io/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/web.lemon.indiedev.io/Controllers/WeatherForecastController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web.lemon.indiedev.io/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/web.lemon.indiedev.io/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/app/directives/toast-outlet.directive.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../src/app/directives/toast-outlet.directive.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,7 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/web.lemon.indiedev.io/Controllers/WeatherForecastController.cs" />
       <option value="$PROJECT_DIR$/web.lemon.indiedev.io/Program.cs" />
+      <option value="$PROJECT_DIR$/web.lemon.indiedev.io/Startup.cs" />
     </changedPaths>
   </component>
   <component name="MacroExpansionManager">
@@ -81,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1613600201900</updated>
       <workItem from="1613600223680" duration="95000" />
-      <workItem from="1613674625609" duration="1345000" />
+      <workItem from="1613674625609" duration="5792000" />
     </task>
     <servers />
   </component>

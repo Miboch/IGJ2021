@@ -9,9 +9,10 @@
   ViewContainerRef
 } from '@angular/core';
 import {ToastService} from '../services/toast-service';
-import {Subscription} from 'rxjs';
-import {ToasterModel} from '../models/toaster.model';
+import {Subscription, timer} from 'rxjs';
 import {ToastComponent} from '../components/toast/toast.component';
+import {ToasterModel} from '../models/toaster.model';
+import {take} from 'rxjs/operators';
 
 @Directive({selector: '[igjToastOutlet]'})
 export class ToastOutletDirective implements OnInit, OnDestroy {
@@ -45,15 +46,26 @@ export class ToastOutletDirective implements OnInit, OnDestroy {
     toastComponent.instance.message = data.text;
     toastComponent.instance.title = data.title;
     toastComponent.instance.type = data.type;
+
+    const toastCloseAction = () => {
+      const idx = this.toastStack.findIndex(e => e == toastComponent);
+      const heightOffset = toastComponent.instance.wrapperReference.nativeElement.getBoundingClientRect().height;
+      const toastSlice = this.toastStack.slice(idx);
+      toastComponent.destroy();
+      toastSlice.forEach(toaster => {
+        toaster.instance.bottom -= heightOffset;
+      });
+    }
     this.toasterSubscription.add(
       toastComponent.instance.closeButtonEmitter.subscribe(r => {
-        const idx = this.toastStack.findIndex(e => e == toastComponent);
-        const heightOffset = toastComponent.instance.wrapperReference.nativeElement.getBoundingClientRect().height;
-        const toastSlice = this.toastStack.slice(idx);
-        toastComponent.destroy();
-        toastSlice.forEach(toaster => {
-          toaster.instance.bottom -= heightOffset;
-        });
+        toastCloseAction();
+      })
+    );
+    this.toasterSubscription.add(
+      timer(9000).pipe(
+        take(1)
+      ).subscribe(timerExpire => {
+        toastCloseAction();
       })
     );
     setTimeout(() => {
