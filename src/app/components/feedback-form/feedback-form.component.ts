@@ -18,7 +18,7 @@ export class FeedbackFormComponent implements OnInit {
     "Facts About Dogs"
   ];
 
-  constructor(private fb: FormBuilder, private service: FeedbackService) {
+  constructor(private fb: FormBuilder, private service: FeedbackService, private toastService: ToastService) {
     this.feedbackFormGroup = this.createForm();
   }
 
@@ -48,6 +48,11 @@ export class FeedbackFormComponent implements OnInit {
       }).subscribe(postFeedback => {
         console.log(postFeedback);
       });
+      let feedbackMessage = "Thank you for your feedback!";
+      if (this.feedbackFormGroup.get('feedbackType')?.value === "Facts About Dogs") {
+        feedbackMessage = "🐶 Thank you for your feedback! 🐶";
+      }
+      this.toastService.success(feedbackMessage, "Form submitted");
       this.resetForm();
     }
 
