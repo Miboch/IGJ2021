@@ -9,6 +9,7 @@
   right: 0;
   height: 100vh;
   z-index: 100;
+  overflow-y: auto;
 }
 
 .panel-header-wrapper {
@@ -16,6 +17,8 @@
   background-color: $sky;
   padding: 1rem;
   margin-top: 1.5rem;
+  position: sticky;
+  top: 0;
 
   ::ng-deep {
     h1, h2, h3, h4, h5 {

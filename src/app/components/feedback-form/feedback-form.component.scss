@@ -1,0 +1,19 @@
+﻿@import 'theme';
+
+textarea {
+  width: 100%;
+  outline: none;
+  background-color: #101010;
+  border: 1px solid $surface-light;
+  color: $raspberry;
+  padding: 1rem;
+  resize: none;
+}
+
+.controls {
+  display: flex;
+  margin-top: 2rem;
+  button {
+    margin-right: 1rem;
+  }
+}

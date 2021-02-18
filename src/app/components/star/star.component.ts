@@ -25,7 +25,6 @@ export class StarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.starValue);
   }
 
   emitStarValue() {

@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {components, routedComponents} from './components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
-import {directives} from './directives';
+import {directives, ToastOutletDirective} from './directives';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import {directives} from './directives';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [ToastOutletDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

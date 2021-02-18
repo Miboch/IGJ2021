@@ -1,7 +1,12 @@
-﻿<form [formGroup]="feedbackFormGroup">
+﻿<form [formGroup]="feedbackFormGroup" (ngSubmit)="submitForm()">
   <igj-form-type-selector [selectOptions]="feedbackTypeOptions" formControlName="feedbackType"></igj-form-type-selector>
   <h3>Rating</h3>
   <igj-rating formControlName="rating"></igj-rating>
+  <h3>Your Feedback</h3>
+    <textarea name="description" id="desc" cols="30" rows="15" formControlName="description"></textarea>
+  <div class="controls">
+    <button class="raspberry">Submit</button>
+    <button (click)="resetForm()" type="button">Reset</button>
+  </div>
 </form>
-{{feedbackFormGroup.getRawValue()|json}}
-<button (click)="resetForm()">Reset</button>
+

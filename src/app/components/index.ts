@@ -8,6 +8,7 @@ import {MenuComponent} from './menu/menu.component';
 import {OverlayPanelComponent} from './overlay-panel/overlay-panel.component';
 import {RatingComponent} from './rating/rating.component';
 import {StarComponent} from './star/star.component';
+import {ToastComponent} from './toast/toast.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 
 export const components = [
@@ -18,6 +19,7 @@ export const components = [
   OverlayPanelComponent,
   RatingComponent,
   StarComponent,
+  ToastComponent,
   ToolbarComponent,
 ];
 
