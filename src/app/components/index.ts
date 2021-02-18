@@ -5,6 +5,7 @@ import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 import {FormTypeSelectorComponent} from './form-type-selector/form-type-selector.component';
 import {IconDecoratorComponent} from './icon-decorator/icon-decorator.component';
 import {MenuComponent} from './menu/menu.component';
+import {PageComponent} from './page/page.component';
 import {OverlayPanelComponent} from './overlay-panel/overlay-panel.component';
 import {RatingComponent} from './rating/rating.component';
 import {StarComponent} from './star/star.component';
@@ -16,6 +17,7 @@ export const components = [
   FormTypeSelectorComponent,
   IconDecoratorComponent,
   MenuComponent,
+  PageComponent,
   OverlayPanelComponent,
   RatingComponent,
   StarComponent,
@@ -32,6 +34,7 @@ export * from './feedback-form/feedback-form.component';
 export * from './form-type-selector/form-type-selector.component';
 export * from './icon-decorator/icon-decorator.component';
 export * from './menu/menu.component';
+export * from './page/page.component';
 export * from './overlay-panel/overlay-panel.component';
 export * from './rating/rating.component';
 export * from './star/star.component';

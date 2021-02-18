@@ -20,7 +20,7 @@ import {delay, tap} from 'rxjs/operators';
 })
 
 export class OverlayPanelComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() panelCloseSubject: Subject<boolean>;
+  @Input() panelDisplaySubject: Subject<boolean>;
   @ContentChild(OverlayPanelHeaderDirective, {read: TemplateRef}) headerTemplate!: TemplateRef<any>;
   @ViewChild('overlayTray', {static: false}) trayReference!: ElementRef
   panelCloseSubscription!: Subscription;
@@ -42,7 +42,7 @@ export class OverlayPanelComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   constructor() {
-    this.panelCloseSubject = new Subject<boolean>();
+    this.panelDisplaySubject = new Subject<boolean>();
     this.showPanelState = false;
     this.showOverlay = false;
   }
@@ -51,7 +51,7 @@ export class OverlayPanelComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if ('panelCloseSubject' in changes) {
+    if ('panelDisplaySubject' in changes) {
       this.resubscribe()
     }
   }
@@ -62,18 +62,18 @@ export class OverlayPanelComponent implements OnInit, OnDestroy, OnChanges {
 
   resubscribe() {
     this.panelCloseSubscription?.unsubscribe();
-    this.panelCloseSubscription = this.panelCloseSubject.pipe(
-      tap(shouldClose => {
-        this.showPanelState = !shouldClose;
+    this.panelCloseSubscription = this.panelDisplaySubject.pipe(
+      tap(newPanelState => {
+        this.showPanelState = newPanelState;
       }),
       delay(300)
-    ).subscribe(shouldClose => {
-      this.showOverlay = !shouldClose;
+    ).subscribe(newPanelState => {
+      this.showOverlay = newPanelState;
     });
   }
 
   panelClose() {
-    this.panelCloseSubject.next(true);
+    this.panelDisplaySubject.next(false);
   }
 
   private clickedOutsidePanel(element: HTMLElement): boolean {

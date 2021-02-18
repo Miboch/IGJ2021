@@ -28,7 +28,7 @@ import {directives, ToastOutletDirective} from './directives';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [ToastOutletDirective],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

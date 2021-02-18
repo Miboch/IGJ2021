@@ -18,7 +18,7 @@ export class FeedbackFormComponent implements OnInit {
     "Facts About Dogs"
   ];
 
-  constructor(private fb: FormBuilder, private service: FeedbackService, private toaster: ToastService) {
+  constructor(private fb: FormBuilder, private service: FeedbackService) {
     this.feedbackFormGroup = this.createForm();
   }
 
