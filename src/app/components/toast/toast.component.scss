@@ -34,6 +34,7 @@
   max-width: 350px;
   width: 100%;
   animation: shoot-in 1s cubic-bezier(0, 1.29, 0.81, 1.15);
+  z-index: 20;
 }
 
 .toaster-header {

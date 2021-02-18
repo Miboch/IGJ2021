@@ -80,7 +80,7 @@ button {
   border: none;
   cursor: pointer;
   color: $text;
-  background-color: $surface-light;
+  background-color: $surface;
   &:hover {
     background-image: radial-gradient(transparentize($text, .65), transparent);
   }
