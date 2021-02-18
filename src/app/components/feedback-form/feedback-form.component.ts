@@ -42,7 +42,9 @@ export class FeedbackFormComponent implements OnInit {
       this.service.postFeedback({
         description: this.feedbackFormGroup.get('description')?.value,
         rating: this.feedbackFormGroup.get('rating')?.value,
-        type: this.feedbackFormGroup.get('feedbackType')?.value
+        type: this.feedbackFormGroup.get('feedbackType')?.value,
+        read: false,
+        submitted: new Date()
       }).subscribe(postFeedback => {
         console.log(postFeedback);
       });
