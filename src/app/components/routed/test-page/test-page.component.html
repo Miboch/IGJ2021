@@ -1,1 +1,13 @@
-<igj-page></igj-page>
+<igj-page>
+  <section>
+    <h2>Test Toaster</h2>
+    <textarea name="whatever" id="whatever" cols="30" rows="10" [(ngModel)]="textValue"></textarea><br>
+    <button (click)="createSuccess()">Create Success</button>
+    <button (click)="createWarn()">Create Warning</button>
+    <button (click)="createError()">Create Error</button>
+  </section>
+  <section>
+    <h2>Test Modal</h2>
+    <button class="lemon">A sad button that does nothing :(</button>
+  </section>
+</igj-page>

@@ -1,24 +1,40 @@
 ﻿import {Injectable} from '@angular/core';
-import {ToastOutletDirective} from '../directives';
+import {Subject} from 'rxjs';
+import {ToasterModel} from '../models/toaster.model';
+import {ToasterTypeModel} from '../models/toaster-type.model';
 
 @Injectable({providedIn: 'root'})
 export class ToastService {
 
-  constructor(private outlet: ToastOutletDirective) {
-    console.log(outlet);
+  toasterSubject: Subject<ToasterModel>;
+
+  constructor() {
+    this.toasterSubject = new Subject<ToasterModel>();
   }
 
 
-  success(msg: string): void {
-
+  success(msg: string, title: string): void {
+    this.toasterSubject.next({
+      text: msg,
+      title,
+      type: ToasterTypeModel.SUCCESS
+    });
   }
 
-  warn(msg: string): void {
-
+  warn(msg: string, title: string): void {
+    this.toasterSubject.next({
+      text: msg,
+      title,
+      type: ToasterTypeModel.WARNING
+    });
   }
 
-  error(msg: string): void {
-
+  error(msg: string, title: string): void {
+    this.toasterSubject.next({
+      text: msg,
+      title,
+      type: ToasterTypeModel.ERROR
+    });
   }
 
 }

@@ -7,6 +7,16 @@ $text: #F1F2F3;
 $lemon: #DBC46B;
 $copper: #EB9D7A;
 
+$warning-light: #D99D4C;
+$warning: #DE932B;
+
+$error-light: #D95C4C;
+$error: #DC2F18;
+
+$success-light: #A0D94C;
+$success: #7EB52C;
+
+
 @mixin shadow($towards: 'down') {
   @if $towards == 'right' {
     box-shadow: 4px 0 4px -2px #000;

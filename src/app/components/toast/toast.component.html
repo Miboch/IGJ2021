@@ -1,0 +1,13 @@
+<div class="toaster-wrapper" [ngClass]="{'warn': type === toastTypes.WARNING,
+       'success': type === toastTypes.SUCCESS,
+       'error': type === toastTypes.ERROR}"
+     [style.bottom]="bottomPosition"
+     #eminem>
+  <div class="toaster-header">
+    <span>{{title}}</span>
+    <span role="button" class="fa fa-times button-like" (click)="closeButtonEmitter.emit()"></span>
+  </div>
+  <div class="toaster-content">
+    {{message}}
+  </div>
+</div>

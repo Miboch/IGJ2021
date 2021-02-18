@@ -16,9 +16,6 @@ export class IconDecoratorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.panelControl.next(true);
-    })
   }
 
   openPanel() {

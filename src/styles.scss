@@ -86,6 +86,11 @@ button {
     background-color: $sky;
     color: $text
   }
+}
 
-
+.button-like {
+  cursor: pointer;
+  &:hover {
+    background-image: radial-gradient(transparentize($text, .65), transparent);
+  }
 }
