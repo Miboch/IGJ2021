@@ -1,0 +1,28 @@
+﻿<div class="igj-item-decorator">
+  <h2 class="raspberry">Submit Feedback</h2>
+  <ul>
+    <li>
+      <a href="https://github.com/Miboch/IGJ2021/issues" target="_blank">
+        <span class="fa fa-github lemon" matTooltip="View On Github"></span>
+      </a>
+    </li>
+    <li>
+      <span class="fa fa-comments sky" role="button" (click)="openPanel()" matTooltip="Fill Out Form"></span>
+    </li>
+    <li>
+      <a href="https://discord.gg/Bv8vdChMsv" target="_blank">
+        <span class="fa fa-discord lime" matTooltip="Join The Discord"></span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<igj-overlay-panel [panelCloseSubject]="panelControl">
+  <ng-template igjOverlayPanelHeader>
+    <div class="push-down">
+      <h1>Submit Feedback</h1>
+      <p>Submit feedback via. the form below</p>
+    </div>
+  </ng-template>
+  <igj-feedback-form></igj-feedback-form>
+</igj-overlay-panel>

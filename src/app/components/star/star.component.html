@@ -1,0 +1,6 @@
+﻿<div class="star-container" (click)="emitStarValue()">
+  <span class="fa fa-star-o"
+        *ngIf="(starValue > currentRating) && !(highlightValue >= starValue) || (highlightValue < currentRating) && highlightValue < starValue && highlightValue != 0"></span>
+  <span class="fa fa-star raspberry" *ngIf="starValue <= currentRating  && !(highlightValue != 0)"></span>
+  <span class="fa fa-star lemon" *ngIf="highlightValue >= starValue"></span>
+</div>

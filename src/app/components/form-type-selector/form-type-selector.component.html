@@ -1,0 +1,6 @@
+﻿<h3>Select Feedback Type</h3>
+<div *ngFor="let opt of selectOptions" class="feedback-type-select"
+     [ngClass]="{'selected': opt == selectedOption}"
+     (click)="selectOption(opt)">
+  {{opt}}
+</div>

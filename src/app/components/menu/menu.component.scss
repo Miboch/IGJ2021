@@ -1,0 +1,49 @@
+﻿@import 'theme';
+
+.menu-layout {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.push-right {
+  margin-left: auto;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+
+
+ul {
+  list-style-type: none;
+  margin-left: 2rem;
+  display: flex;
+  align-items: baseline;
+  height: 100%;
+
+  li {
+    height: 100%;
+
+    a {
+      padding: 0 .5rem;
+      color: $raspberry;
+      text-decoration: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: ease-in-out 90ms;
+    }
+
+    &.activated {
+      a {
+        color: $text;
+        background-color: $raspberry;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,23 @@
+$surface: #1C191E;
+$surface-light: #3D3940;
+$raspberry: #CA4180;
+$lime: #57C791;
+$sky: #1D89CF;
+$text: #F1F2F3;
+$lemon: #DBC46B;
+$copper: #EB9D7A;
+
+@mixin shadow($towards: 'down') {
+  @if $towards == 'right' {
+    box-shadow: 4px 0 4px -2px #000;
+  }
+  @if $towards == 'left' {
+    box-shadow: -4px 0 4px -2px #000;
+  }
+  @if $towards == 'down' {
+    box-shadow: 0 4px 4px -2px #000;
+  }
+  @if $towards == 'up' {
+    box-shadow: 0 -4px 4px -2px #000;
+  }
+}

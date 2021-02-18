@@ -1,0 +1,49 @@
+﻿@import 'theme';
+
+.igj-item-decorator {
+  position: absolute;
+  bottom: 0;
+  right: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin: 0 2rem;
+      cursor: pointer;
+      transition: ease-in-out 120ms;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &:active {
+        span {
+          color: $text;
+        }
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: .5rem;
+  }
+}
+
+.push-down {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  h1 {
+    margin: 0;
+  }
+}

@@ -1,0 +1,19 @@
+﻿@import 'theme';
+
+.feedback-type-select {
+  background-color: $surface-light;
+  padding: 1.5rem;
+  border-bottom: 1px solid $surface;
+  cursor: pointer;
+  font-weight: 200;
+
+  &:hover {
+    background-color: lighten($surface-light, 5);
+  }
+
+  &.selected {
+    font-weight: normal;
+    background-color: $raspberry;
+  }
+
+}

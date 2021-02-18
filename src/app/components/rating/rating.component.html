@@ -1,0 +1,9 @@
+﻿<div class="stars">
+  <igj-star *ngFor="let i of [].constructor(maxRating); let idx = index"
+            [starValue]="idx+1"
+            (starValueEmitter)="clickedStar($event)"
+            (hoverValueEmitter)="hoverStar($event)"
+            [highlightValue]="currentHighlightValue"
+            [currentRating]="rating">
+  </igj-star>
+</div>

@@ -1,0 +1,37 @@
+﻿@import 'theme';
+
+.overlay-tray-wrapper {
+  background-color: $surface;
+  max-width: 80%;
+  width: 800px;
+  @include shadow('left');
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+.panel-header-wrapper {
+  height: 135px;
+  background-color: $sky;
+  padding: 1rem;
+  margin-top: 1.5rem;
+
+  ::ng-deep {
+    h1, h2, h3, h4, h5 {
+      font-size: 22pt;
+    }
+  }
+}
+
+.tray-full-page {
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.panel-content {
+  padding: 1rem;
+}
