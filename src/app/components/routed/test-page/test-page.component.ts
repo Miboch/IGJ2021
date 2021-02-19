@@ -1,5 +1,6 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {ToastService} from '../../../services/toast-service';
+import {Subject} from 'rxjs';
 
 @Component({
   templateUrl: './test-page.component.html',
@@ -8,8 +9,10 @@ import {ToastService} from '../../../services/toast-service';
 
 export class TestPageComponent implements OnInit {
   textValue = "";
+  modalDispaySubject$: Subject<boolean>;
 
   constructor(private toasterService: ToastService) {
+    this.modalDispaySubject$ = new Subject<boolean>();
   }
 
   ngOnInit(): void {
@@ -25,6 +28,10 @@ export class TestPageComponent implements OnInit {
 
   createError() {
     this.toasterService.error(this.textValue, "TEST");
+  }
+
+  openModal() {
+    this.modalDispaySubject$.next(true);
   }
 
 }

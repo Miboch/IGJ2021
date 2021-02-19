@@ -1,7 +1,12 @@
-﻿<div class="modal-tonedown-overlay">
+﻿<div class="modal-tonedown-overlay" *ngIf="modalDisplayState">
   <div class="modal-window">
     <div class="modal-header">
-      <ng-container *ngTemplateOutlet="modalHeader"></ng-container>
+      <div>
+        <ng-container *ngTemplateOutlet="modalHeader"></ng-container>
+      </div>
+      <div class="pull-right">
+        <span class="fa fa-times" role="button" (click)="closeModal()"></span>
+      </div>
     </div>
     <div class="modal-content">
       <ng-container *ngTemplateOutlet="modalContent"></ng-container>
