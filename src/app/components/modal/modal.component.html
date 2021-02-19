@@ -1,0 +1,13 @@
+﻿<div class="modal-tonedown-overlay">
+  <div class="modal-window">
+    <div class="modal-header">
+      <ng-container *ngTemplateOutlet="modalHeader"></ng-container>
+    </div>
+    <div class="modal-content">
+      <ng-container *ngTemplateOutlet="modalContent"></ng-container>
+    </div>
+  </div>
+</div>
+<ng-template>
+  <ng-content></ng-content>
+</ng-template>

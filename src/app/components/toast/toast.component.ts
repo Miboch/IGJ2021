@@ -32,6 +32,4 @@ export class ToastComponent implements OnInit {
   public moveUp(byAmount: number) {
     this.bottom += byAmount;
   }
-
-
 }
