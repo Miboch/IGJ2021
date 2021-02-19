@@ -1,6 +1,7 @@
 ﻿import {GameComponent} from './routed/game/game.component';
 import {TestPageComponent} from './routed/test-page/test-page.component';
 
+import {CanvasComponent} from './canvas/canvas.component';
 import {DropdownListComponent} from './dropdown-list/dropdown-list.component';
 import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 import {FormTypeSelectorComponent} from './form-type-selector/form-type-selector.component';
@@ -15,6 +16,7 @@ import {ToastComponent} from './toast/toast.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 
 export const components = [
+  CanvasComponent,
   DropdownListComponent,
   FeedbackFormComponent,
   FormTypeSelectorComponent,
@@ -34,6 +36,7 @@ export const routedComponents = [
   TestPageComponent
 ];
 
+export * from './canvas/canvas.component';
 export * from './dropdown-list/dropdown-list.component';
 export * from './feedback-form/feedback-form.component';
 export * from './form-type-selector/form-type-selector.component';
