@@ -1,0 +1,8 @@
+﻿{
+  "/api/*": {
+    "target": "https://lemon.indiedev.io",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

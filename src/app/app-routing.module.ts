@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {GameComponent, TestPageComponent} from './components';
+import {FeedbackComponent, GameComponent, TestPageComponent} from './components';
 
 const routes: Routes = [
   {
@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'test',
     component: TestPageComponent
+  },
+  {
+    path: 'feedback',
+    component: FeedbackComponent
   }
 ];
 

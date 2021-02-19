@@ -31,3 +31,15 @@ $success: #7EB52C;
     box-shadow: 0 -4px 4px -2px #000;
   }
 }
+
+@mixin if-small() {
+  @media screen and (max-width: 1600px) {
+    @content
+  }
+}
+
+@mixin only-large() {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}

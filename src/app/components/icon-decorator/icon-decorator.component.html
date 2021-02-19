@@ -1,5 +1,27 @@
-﻿<div class="igj-item-decorator">
-  <h2 class="raspberry">Submit Feedback</h2>
+﻿<div class="only-large">
+  <div class="igj-item-decorator">
+    <h2 class="raspberry">Submit Feedback</h2>
+    <ul>
+      <li>
+        <a href="https://github.com/Miboch/IGJ2021/issues" target="_blank">
+          <span class="fa fa-github lemon" matTooltip="View On Github"></span>
+        </a>
+      </li>
+      <li>
+        <span class="fa fa-comments sky" role="button" (click)="openPanel()" matTooltip="Fill Out Form"></span>
+      </li>
+      <li>
+        <a href="https://discord.gg/Bv8vdChMsv" target="_blank">
+          <span class="fa fa-discord lime" matTooltip="Join The Discord"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="if-small center-bottom feedback-smaller">
+  <h2 class="raspberry">Give feedback: </h2>
   <ul>
     <li>
       <a href="https://github.com/Miboch/IGJ2021/issues" target="_blank">
@@ -16,6 +38,7 @@
     </li>
   </ul>
 </div>
+
 
 <igj-overlay-panel [panelDisplaySubject]="panelControl">
   <ng-template igjOverlayPanelHeader>

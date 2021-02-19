@@ -74,7 +74,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "igj2021:build"
+            "browserTarget": "igj2021:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {

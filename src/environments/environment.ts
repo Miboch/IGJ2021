@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiRoot: 'https://lemon.indiedev.io'
+  apiRoot: ''
 };
 
 /*

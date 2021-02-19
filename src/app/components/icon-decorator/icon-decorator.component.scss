@@ -1,10 +1,13 @@
 ﻿@import 'theme';
 
 .igj-item-decorator {
+  @include only-large {
+    display: flex;
+  }
   position: fixed;
   bottom: 0;
   right: 64px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 
@@ -43,7 +46,46 @@
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
+
   h1 {
+    margin: 0;
+  }
+}
+
+.center-bottom {
+  position: fixed;
+  bottom: 2px;
+  left: 50%;
+  z-index: 2;
+  display: none;
+  @include if-small {
+    display: flex;
+  }
+  transform: translateX(-50%);
+  width: 1024px;
+  font-size: .8rem;
+  justify-content: center;
+  align-items: baseline;
+  background-color: $surface-light;
+  @include shadow('up');
+  padding: .5rem;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+
+    li {
+      margin-right: 2rem;
+
+      &:first-of-type {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  h2 {
     margin: 0;
   }
 }
