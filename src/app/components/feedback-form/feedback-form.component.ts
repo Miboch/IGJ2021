@@ -44,16 +44,15 @@ export class FeedbackFormComponent implements OnInit {
         rating: this.feedbackFormGroup.get('rating')?.value,
         type: this.feedbackFormGroup.get('feedbackType')?.value,
         read: false,
-        submitted: new Date()
       }).subscribe(postFeedback => {
-        console.log(postFeedback);
+        let feedbackMessage = "Thank you for your feedback!";
+        if (this.feedbackFormGroup.get('feedbackType')?.value === "Facts About Dogs") {
+          feedbackMessage = "🐶 Thank you for your feedback! 🐶";
+        }
+        this.toastService.success(feedbackMessage, "Form submitted");
+        this.resetForm();
       });
-      let feedbackMessage = "Thank you for your feedback!";
-      if (this.feedbackFormGroup.get('feedbackType')?.value === "Facts About Dogs") {
-        feedbackMessage = "🐶 Thank you for your feedback! 🐶";
-      }
-      this.toastService.success(feedbackMessage, "Form submitted");
-      this.resetForm();
+
     }
 
   }
