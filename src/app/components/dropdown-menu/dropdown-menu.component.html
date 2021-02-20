@@ -1,0 +1,25 @@
+﻿<igj-hover-list (listItemClicked)="itemIsClicked($event)" [items]="actions">
+
+  <ng-container *ngIf="isSignedIn; else signup">
+    <ng-template igjListHeader>
+      <div class="profile-container">
+        <span class="fa fa-caret-square-o-down"></span>
+        {{username}}
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #signup igjListHeader>
+    <div class="profile-container">
+      <span class="fa fa-caret-square-o-down"></span>
+      Sign In
+    </div>
+  </ng-template>
+
+
+  <ng-template igjListItem let-item>
+    <div class="choice-container" #choice>
+      {{item.actionText}}
+    </div>
+  </ng-template>
+</igj-hover-list>

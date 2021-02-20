@@ -3,6 +3,7 @@ import {GameComponent} from './routed/game/game.component';
 import {TestPageComponent} from './routed/test-page/test-page.component';
 
 import {CanvasComponent} from './canvas/canvas.component';
+import {DropdownMenuComponent} from './dropdown-menu/dropdown-menu.component';
 import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 import {FormTypeSelectorComponent} from './form-type-selector/form-type-selector.component';
 import {HoverListComponent} from './hover-list/hover-list.component';
@@ -18,6 +19,7 @@ import {ToolbarComponent} from './toolbar/toolbar.component';
 
 export const components = [
   CanvasComponent,
+  DropdownMenuComponent,
   FeedbackFormComponent,
   FormTypeSelectorComponent,
   HoverListComponent,
@@ -39,6 +41,7 @@ export const routedComponents = [
 ];
 
 export * from './canvas/canvas.component';
+export * from './dropdown-menu/dropdown-menu.component';
 export * from './feedback-form/feedback-form.component';
 export * from './form-type-selector/form-type-selector.component';
 export * from './hover-list/hover-list.component';

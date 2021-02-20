@@ -1,6 +1,6 @@
 <div class="hover-container">
   <ng-container *ngTemplateOutlet="listHeaderTemplate"></ng-container>
-  <div class="hover-items">
+  <div class="hover-items" [ngClass]="{'left': hoverLeft, 'right': hoverRight}">
     <ng-container *ngFor="let item of items">
       <div (click)="clickHandler(item)">
         <ng-container

@@ -29,10 +29,9 @@
       <ng-template igjListHeader>
         <div class="boxed wider">This is the same component but with different styling!</div>
       </ng-template>
-      <ng-template igjListItem let-item let-clicked>
-        <div class="wide-item" [ngClass]="{'test': item === clicked}">
+      <ng-template igjListItem let-item>
+        <div class="wide-item">
           {{item}}
-          {{clicked}}
         </div>
       </ng-template>
     </igj-hover-list>

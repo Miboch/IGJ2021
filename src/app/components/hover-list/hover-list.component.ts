@@ -26,6 +26,8 @@ export class HoverListComponent implements OnInit, OnChanges {
   @Output() listItemClicked: EventEmitter<any>;
   @ContentChild(ListHeaderDirective, {read: TemplateRef}) listHeaderTemplate!: TemplateRef<any>;
   @ContentChild(ListItemDirective, {read: TemplateRef}) listItemTemplate!: TemplateRef<any>;
+  hoverLeftState = false;
+  hoverRightState = true;
 
   constructor() {
     this.items = [];
@@ -46,5 +48,14 @@ export class HoverListComponent implements OnInit, OnChanges {
   clickHandler(item: any) {
     this.listItemClicked.emit(item);
   }
+
+  get hoverLeft() {
+    return this.hoverLeftState
+  }
+
+  get hoverRight() {
+    return this.hoverRightState;
+  }
+
 
 }

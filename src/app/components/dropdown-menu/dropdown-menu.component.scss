@@ -1,0 +1,34 @@
+﻿@import 'theme';
+
+:host {
+  height: 100%;
+}
+
+.profile-container {
+  background-color: $lemon;
+  height: 100%;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: .5rem;
+  }
+  user-select: none;
+}
+
+::ng-deep {
+  .hover-container {
+    height: 100%;
+  }
+}
+
+.choice-container {
+  background-color: $surface-light;
+  border-bottom: 1px solid $surface;
+  width: 310px;
+  padding: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: $lemon;
+  }
+}
