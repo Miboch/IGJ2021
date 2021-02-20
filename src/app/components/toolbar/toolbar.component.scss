@@ -4,7 +4,6 @@
   position: relative;
   background-color: $surface-light;
   height: 45px;
-  padding: 0 16px;
   @include shadow();
   z-index: 2;
 }

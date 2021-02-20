@@ -23,4 +23,8 @@ export class FeedbackService {
     return this.http.get<FeedbackModel[]>(this.apiPath);
   }
 
+  getSpecificFeedback(id: number): Observable<FeedbackModel> {
+    return this.http.get<FeedbackModel>(this.apiPath + `/${id}`);
+  }
+
 }
