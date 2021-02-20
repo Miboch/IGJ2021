@@ -1,0 +1,16 @@
+<div class="hover-container">
+  <ng-container *ngTemplateOutlet="listHeaderTemplate"></ng-container>
+  <div class="hover-items">
+    <ng-container *ngFor="let item of items">
+      <div (click)="clickHandler(item)">
+        <ng-container
+          *ngTemplateOutlet="listItemTemplate;context:{$implicit: item}">
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<ng-template>
+  <ng-content>
+  </ng-content>
+</ng-template>

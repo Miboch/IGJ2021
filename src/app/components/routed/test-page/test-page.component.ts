@@ -34,4 +34,9 @@ export class TestPageComponent implements OnInit {
     this.modalDispaySubject$.next(true);
   }
 
+  handleClick(event: any) {
+    console.log(event);
+  }
+
+
 }

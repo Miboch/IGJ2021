@@ -1,3 +1,28 @@
+@import 'theme';
+
 textarea {
   width: 100%;
+}
+
+.boxed {
+  width: 130px;
+  background-color: $copper;
+  color: $text;
+  &.wider {
+    width: 800px;
+  }
+}
+
+.wide-item {
+  background-color: $surface;
+  border-bottom: 1px solid $surface-light;
+  width: 420px;
+  padding: 1.5rem;
+  &:hover {
+    background-color: $raspberry;
+  }
+}
+
+.text {
+  background-color: $lemon;
 }

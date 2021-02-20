@@ -1,0 +1,12 @@
+.hover-container {
+  display: inline-block;
+  &:hover {
+    .hover-items {
+      display: block;
+    }
+  }
+}
+
+.hover-items {
+  display: none;
+}

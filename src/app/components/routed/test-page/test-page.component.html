@@ -11,6 +11,36 @@
     <h2>Test Modal</h2>
     <button class="raspberry" (click)="openModal()">Open a moodal</button>
   </section>
+  <section>
+    <h2>Hover Lists</h2>
+
+    <igj-hover-list [items]="[1,2,3,4,5,100]">
+      <ng-template igjListHeader>
+        <div class="boxed">This is a hoverable element</div>
+      </ng-template>
+      <ng-template igjListItem let-item>
+        <div class="wide-item">
+          {{item}}
+        </div>
+      </ng-template>
+    </igj-hover-list>
+<br>
+    <igj-hover-list [items]="[1,2,3,4,5,6]" (listItemClicked)="handleClick($event)">
+      <ng-template igjListHeader>
+        <div class="boxed wider">This is the same component but with different styling!</div>
+      </ng-template>
+      <ng-template igjListItem let-item let-clicked>
+        <div class="wide-item" [ngClass]="{'test': item === clicked}">
+          {{item}}
+          {{clicked}}
+        </div>
+      </ng-template>
+    </igj-hover-list>
+
+
+  </section>
+
+
 </igj-page>
 
 <igj-modal [modalDisplay$]="modalDispaySubject$">
