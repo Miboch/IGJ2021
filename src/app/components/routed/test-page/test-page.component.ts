@@ -19,15 +19,19 @@ export class TestPageComponent implements OnInit {
   }
 
   createWarn() {
-    this.toasterService.warn(this.textValue, "TEST");
+    this.toasterService.warn(this.textValue, "WARNING");
   }
 
   createSuccess() {
-    this.toasterService.success(this.textValue, "TEST");
+    this.toasterService.success(this.textValue, "SUCCESS");
   }
 
   createError() {
-    this.toasterService.error(this.textValue, "TEST");
+    this.toasterService.error(this.textValue, "ERROR");
+  }
+
+  createInfo() {
+    this.toasterService.info(this.textValue, "INFORMATION")
   }
 
   openModal() {

@@ -29,6 +29,14 @@ export class ToastService {
     });
   }
 
+  info(msg: string, title: string): void {
+    this.toasterSubject.next({
+      text: msg,
+      title,
+      type: ToasterTypeModel.INFO
+    });
+  }
+
   error(msg: string, title: string): void {
     this.toasterSubject.next({
       text: msg,

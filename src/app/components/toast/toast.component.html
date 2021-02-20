@@ -1,6 +1,8 @@
-<div class="toaster-wrapper" [ngClass]="{'warn': type === toastTypes.WARNING,
-       'success': type === toastTypes.SUCCESS,
-       'error': type === toastTypes.ERROR}"
+<div class="toaster-wrapper" [ngClass]="{
+    'warn': type === toastTypes.WARNING,
+    'success': type === toastTypes.SUCCESS,
+    'error': type === toastTypes.ERROR,
+    'info': type === toastTypes.INFO}"
      [style.bottom]="bottomPosition"
      #eminem>
   <div class="toaster-header">

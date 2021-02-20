@@ -16,6 +16,9 @@ $error: #DC2F18;
 $success-light: #A0D94C;
 $success: #7EB52C;
 
+$info: #2C5EB5;
+$info-light: #4C80D9;
+
 
 @mixin shadow($towards: 'down') {
   @if $towards == 'right' {

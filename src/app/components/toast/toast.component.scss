@@ -6,14 +6,34 @@
   .toaster-header {
     background-color: $warning-light;
   }
+
+  .timeout-animation {
+    background-color: lighten($warning-light, 15);
+  }
 }
 
+
+.info {
+  background-color: $info;
+
+  .toaster-header {
+    background-color: $info-light;
+  }
+
+  .timeout-animation {
+    background-color: lighten($info-light, 15);
+  }
+}
 
 .success {
   background-color: $success;
 
   .toaster-header {
     background-color: $success-light;
+  }
+
+  .timeout-animation {
+    background-color: lighten($success-light, 15);
   }
 }
 
@@ -23,7 +43,12 @@
   .toaster-header {
     background-color: $error-light;
   }
+
+  .timeout-animation {
+    background-color: lighten($error-light, 15);
+  }
 }
+
 
 .toaster-wrapper {
   transition: .25s ease-in-out;
@@ -65,23 +90,6 @@
   animation: shrink 9s linear;
 }
 
-.error {
-  .timeout-animation {
-    background-color: lighten($error-light, 15);
-  }
-}
-
-.warn {
-  .timeout-animation {
-    background-color: lighten($warning-light, 15);
-  }
-}
-
-.success {
-  .timeout-animation {
-    background-color: lighten($success-light, 15);
-  }
-}
 
 @keyframes shrink {
   0% {
