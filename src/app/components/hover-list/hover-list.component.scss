@@ -1,8 +1,13 @@
 .hover-container {
   display: inline-block;
+  position: relative;
   &:hover {
+    z-index: 9000;
     .hover-items {
       display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
     }
   }
 }
