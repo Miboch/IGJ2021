@@ -8,6 +8,7 @@ import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 import {FormTypeSelectorComponent} from './form-type-selector/form-type-selector.component';
 import {HoverListComponent} from './hover-list/hover-list.component';
 import {IconDecoratorComponent} from './icon-decorator/icon-decorator.component';
+import {ListComponent} from './list-component/list.component';
 import {MenuComponent} from './menu/menu.component';
 import {ModalComponent} from './modal/modal.component';
 import {PageComponent} from './page/page.component';
@@ -24,6 +25,7 @@ export const components = [
   FormTypeSelectorComponent,
   HoverListComponent,
   IconDecoratorComponent,
+  ListComponent,
   MenuComponent,
   ModalComponent,
   PageComponent,
@@ -46,6 +48,7 @@ export * from './feedback-form/feedback-form.component';
 export * from './form-type-selector/form-type-selector.component';
 export * from './hover-list/hover-list.component';
 export * from './icon-decorator/icon-decorator.component';
+export * from './list-component/list.component';
 export * from './menu/menu.component';
 export * from './modal/modal.component';
 export * from './page/page.component';
