@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {FeedbackComponent, GameComponent, TestPageComponent} from './components';
+import {FeedbackResolver} from './resolvers/feedback.resolver';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'feedback',
+    resolve: {feedback: FeedbackResolver},
     component: FeedbackComponent
   }
 ];
@@ -26,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

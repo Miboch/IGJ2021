@@ -5,6 +5,9 @@
   margin: 0 auto;
   width: 100%;
   max-width: 1024px;
+  @include only-large {
+    padding: 1rem;
+  }
   padding: 1rem 1rem 5rem 1rem;
   min-height: calc(100vh - 45px);
   background-color: $surface-light;

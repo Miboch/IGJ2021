@@ -1,8 +1,9 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {FeedbackService} from '../../../services/feedback.service';
 import {FeedbackModel} from '../../../models/feedback.model';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {FeedbackTypes} from '../../../models/feedback-types.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   templateUrl: './feedback.component.html',
@@ -10,16 +11,17 @@ import {FeedbackTypes} from '../../../models/feedback-types.model';
 })
 
 export class FeedbackComponent implements OnInit {
-  fbSubject: Subject<FeedbackModel[]>;
+  fbSubject: BehaviorSubject<FeedbackModel[]>;
 
-  constructor(private feedbackService: FeedbackService) {
-    this.fbSubject = new Subject<FeedbackModel[]>();
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.fbSubject = new BehaviorSubject<FeedbackModel[]>([]);
+    this.activatedRoute.data.subscribe(data => {
+      this.fbSubject.next(data['feedback']);
+    });
   }
 
   ngOnInit(): void {
-    this.feedbackService.getFeedback().subscribe(r => {
-      this.fbSubject.next(r);
-    })
+
   }
 }
 
