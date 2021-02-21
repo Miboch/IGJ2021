@@ -41,7 +41,5 @@ yarn global add @angular/cli
 - run yarn install
 - once the install is finished you can start serving the project by running `yarn run start`
 
-### Feedback features in develop
-The feedback API will not be available when running the project locally unless you also spin up a local version of the API.
-
-Instructions to follow...
+## Special Thanks
+[Special thanks to Arkraga on twitch.tv for joining our team and creating art for the game](https://twitch.tv/arkraga)
