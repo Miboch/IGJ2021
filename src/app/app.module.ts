@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {directives, ToastOutletDirective} from './directives';
 import { StoreModule } from '@ngrx/store';
+import {GameModule} from './game/game.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StoreModule } from '@ngrx/store';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({}, {}),
+    GameModule
   ],
   providers: [],
   bootstrap: [AppComponent]
