@@ -1,6 +1,6 @@
-﻿import {FeedbackComponent} from './routed/feedback/feedback.component';
-import {GameComponent} from './routed/game/game.component';
-import {TestPageComponent} from './routed/test-page/test-page.component';
+﻿import {FeedbackComponent} from './@routed/feedback/feedback.component';
+import {GameComponent} from './@routed/game/game.component';
+import {TestPageComponent} from './@routed/test-page/test-page.component';
 
 import {CanvasComponent} from './canvas/canvas.component';
 import {DropdownMenuComponent} from './dropdown-menu/dropdown-menu.component';
@@ -57,6 +57,6 @@ export * from './rating/rating.component';
 export * from './star/star.component';
 export * from './toolbar/toolbar.component';
 
-export * from './routed/feedback/feedback.component';
-export * from './routed/game/game.component';
-export * from './routed/test-page/test-page.component';
+export * from './@routed/feedback/feedback.component';
+export * from './@routed/game/game.component';
+export * from './@routed/test-page/test-page.component';
