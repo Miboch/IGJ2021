@@ -1,6 +1,8 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {FeedbackService} from '../../../services/feedback.service';
 import {FeedbackModel} from '../../../models/feedback.model';
+import {Subject} from 'rxjs';
+import {FeedbackTypes} from '../../../models/feedback-types.model';
 
 @Component({
   templateUrl: './feedback.component.html',
@@ -8,17 +10,16 @@ import {FeedbackModel} from '../../../models/feedback.model';
 })
 
 export class FeedbackComponent implements OnInit {
-
-  feedback: FeedbackModel[];
+  fbSubject: Subject<FeedbackModel[]>;
 
   constructor(private feedbackService: FeedbackService) {
-    this.feedback = [];
+    this.fbSubject = new Subject<FeedbackModel[]>();
   }
 
   ngOnInit(): void {
-    this.feedbackService.getFeedback().subscribe(feedbackCollection => {
-      this.feedback = feedbackCollection;
-    });
+    this.feedbackService.getFeedback().subscribe(r => {
+      this.fbSubject.next(r);
+    })
   }
 }
 

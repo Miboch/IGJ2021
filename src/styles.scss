@@ -104,3 +104,22 @@ button {
     background-image: radial-gradient(transparentize($text, .65), transparent);
   }
 }
+
+input {
+  border-radius: 4px;
+  border: 1px solid $surface-light;
+  background-color: #101010;
+  color: $raspberry;
+  margin: 0 .5rem;
+  font-weight: 200;
+}
+
+input:focus {
+  outline: 1px solid $lemon;
+  border-radius: 4px;
+}
+
+label {
+  cursor: pointer;
+  user-select: none;
+}

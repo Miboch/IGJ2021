@@ -1,0 +1,15 @@
+.list-header-outlet {
+  width: 100%;
+  height: 100%;
+}
+
+.list-body-outlet {
+  width: 100%;
+  height: 100%;
+}
+
+.list-wrapper-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}

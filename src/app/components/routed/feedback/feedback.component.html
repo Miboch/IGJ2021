@@ -1,7 +1,20 @@
 ﻿<igj-page>
-  <h2>Feedback</h2>
-  <div *ngFor="let f of feedback">
-    {{f.description}}
-  </div>
-
+  <igj-list [items$]="fbSubject">
+    <ng-template igjListHeader>
+      <div class="feedback-header">
+        <h2>Feedback</h2>
+      </div>
+    </ng-template>
+    <ng-template igjListItem let-feedback>
+      <div class="feedback-item">
+        <div class="description">
+          {{feedback?.description}}
+        </div>
+        <div class="details">
+          <div class="detail-item"><span>type</span> {{feedback?.type}}</div>
+          <div class="detail-item"><span>rating</span>  {{feedback?.rating}}</div>
+        </div>
+      </div>
+    </ng-template>
+  </igj-list>
 </igj-page>
