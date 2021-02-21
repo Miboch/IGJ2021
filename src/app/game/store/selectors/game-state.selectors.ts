@@ -1,10 +1,11 @@
 ﻿import {createSelector, MemoizedSelector} from '@ngrx/store';
-import {getGameState} from '../index';
+import {getFullState} from '../index';
 import {GameState} from '../../models/state/game-state';
-import {SaveStateModel} from '../../models/save-state.model';
+import {SaveStateModel} from '../../models/state/save-state.model';
 
-export const getSaveState: MemoizedSelector<object, any> = createSelector(
-  getGameState,
+
+export const getGameState: MemoizedSelector<object, any> = createSelector(
+  getFullState,
   (state: GameState) => state.game
 );
 
@@ -13,6 +14,6 @@ export const getSaveState: MemoizedSelector<object, any> = createSelector(
  */
 
 export const getLastUpdated: MemoizedSelector<object, any> = createSelector(
-  getSaveState,
+  getGameState,
   (saveState: SaveStateModel) => saveState.lastUpdated
 );

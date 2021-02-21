@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import {GameState} from '../../../game/models/state/game-state';
 import * as gameSelector from '../../../game/store/selectors/game-state.selectors';
 import * as gameAction from '../../../game/store/actions/game-state.actions';
-import {SaveStateModel} from '../../../game/models/save-state.model';
+import {SaveStateModel} from '../../../game/models/state/save-state.model';
 
 @Component({
   templateUrl: './test-page.component.html',
@@ -30,7 +30,7 @@ export class TestPageComponent implements OnInit {
     });
 
     // we can also utilize the async pipe with states.
-    this.entireSaveState$ = this.store.select(gameSelector.getSaveState);
+    this.entireSaveState$ = this.store.select(gameSelector.getGameState);
 
   }
 
@@ -60,9 +60,13 @@ export class TestPageComponent implements OnInit {
   }
 
   updateExampleProp() {
+
+
     let exampleValue = "********************************".split("").map(star => {
       return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
     }).join('');
+
+
     this.store.dispatch(gameAction.assignState({overwrite: {exampleProperty: exampleValue}}))
   }
 

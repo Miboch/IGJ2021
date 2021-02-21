@@ -1,5 +1,5 @@
 ﻿import {createAction, props} from '@ngrx/store';
-import {SaveStateTransfer} from '../../models/save-state.model';
+import {SaveStateTransfer} from '../../models/state/save-state.model';
 
 export enum GameStateActionTypes {
   ASSIGN_STATE = "[Game State]: Assign properties to game state"

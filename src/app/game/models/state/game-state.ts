@@ -1,4 +1,4 @@
-﻿import {SaveStateModel} from '../save-state.model';
+﻿import {SaveStateModel} from './save-state.model';
 
 export interface GameState {
   game: SaveStateModel

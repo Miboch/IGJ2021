@@ -1,6 +1,7 @@
-﻿import {SaveStateModel} from '../../models/save-state.model';
+﻿
 import {Action, createReducer, on} from '@ngrx/store';
 import * as gameActions from '../actions/game-state.actions';
+import {SaveStateModel} from '../../models/state/save-state.model';
 
 /**
  * Here we define how the game state should be for fresh games.
