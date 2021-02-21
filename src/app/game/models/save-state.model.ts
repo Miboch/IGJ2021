@@ -4,7 +4,8 @@
  *
  */
 export interface SaveStateModel {
-  lastUpdated: Date
+  lastUpdated: Date,
+  exampleProperty: string;
 }
 
 /**
@@ -13,5 +14,6 @@ export interface SaveStateModel {
  * then choose to only update 1 property at a time via Object.assign.
  */
 export interface SaveStateTransfer {
-  lastUpdated?: Date
+  lastUpdated?: Date,
+  exampleProperty?: string;
 }

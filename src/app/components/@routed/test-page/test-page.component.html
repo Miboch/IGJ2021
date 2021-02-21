@@ -27,6 +27,21 @@
       </ng-template>
     </igj-hover-list>
   </section>
+
+  <section>
+    <h2>Game state store example</h2>
+    {{lastGameSaveTime|date: 'yyyy-MM-dd HH:mm:ss'}}
+    <br>
+    <button class="raspberry" (click)="updateLastSaveTime()">Update Save Time</button>
+    <button class="raspberry" (click)="updateExampleProp()">Update Example Property with random text</button>
+    <button class="raspberry" (click)="updateBoth()">Update Both</button>
+
+    <fieldset>
+      <legend>State Object</legend>
+      {{(entireSaveState$|async)|json}}
+    </fieldset>
+  </section>
+
 </igj-page>
 
 <igj-modal [modalDisplay$]="modalDispaySubject$">

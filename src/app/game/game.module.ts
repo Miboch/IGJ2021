@@ -1,6 +1,8 @@
 ﻿import {NgModule} from '@angular/core';
 import {gameComponents} from './components';
 import {gameDirectives} from './directives';
+import {StoreModule} from '@ngrx/store';
+import {GameStateReducers} from './store';
 
 @NgModule({
     declarations: [
@@ -11,7 +13,9 @@ import {gameDirectives} from './directives';
       ...gameComponents,
       ...gameDirectives
     ],
-    imports: [],
+    imports: [
+      StoreModule.forFeature('game', GameStateReducers)
+    ],
   }
 )
 export class GameModule {
