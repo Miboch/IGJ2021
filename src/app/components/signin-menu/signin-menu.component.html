@@ -1,24 +1,22 @@
 ﻿<igj-hover-list (listItemClicked)="itemIsClicked($event)" [items]="actions">
 
-  <ng-container *ngIf="isSignedIn; else signup">
+  <ng-container *ngIf="(loggedIn$|async); else signup">
     <ng-template igjListHeader>
       <div class="profile-container">
         <span class="fa fa-caret-square-o-down"></span>
-        {{username}}
+        {{(user|async)?.username}}
+      </div>
+    </ng-template>
+    <ng-template igjListItem let-item>
+      <div class="choice-container">
+        {{item.actionText}}
       </div>
     </ng-template>
   </ng-container>
 
   <ng-template #signup igjListHeader>
-    <div class="profile-container">
-      <span class="fa fa-caret-square-o-down"></span>
+    <div class="profile-container" (click)="goToLoggedIn()">
       Sign In
-    </div>
-  </ng-template>
-
-  <ng-template igjListItem let-item>
-    <div class="choice-container">
-      {{item.actionText}}
     </div>
   </ng-template>
 </igj-hover-list>
