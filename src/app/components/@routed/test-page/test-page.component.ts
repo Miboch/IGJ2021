@@ -7,6 +7,7 @@ import * as gameSelector from '../../../game/store/selectors/game-state.selector
 import * as gameAction from '../../../game/store/actions/game-state.actions';
 import * as userSelector from '../../../store/selectors/user.selector';
 import {SaveStateModel} from '../../../game/models/state/save-state.model';
+import {RendererSystem} from '../../../game/systems/renderer.system';
 
 @Component({
   templateUrl: './test-page.component.html',
@@ -19,7 +20,9 @@ export class TestPageComponent implements OnInit {
   lastGameSaveTime!: Date;
   entireSaveState$!: Observable<SaveStateModel>;
 
-  constructor(private toasterService: ToastService, private store: Store<GameState>) {
+  constructor(private toasterService: ToastService,
+              private store: Store<GameState>,
+              private render: RendererSystem) {
     this.modalDispaySubject$ = new Subject<boolean>();
   }
 
@@ -29,6 +32,9 @@ export class TestPageComponent implements OnInit {
     this.store.select(gameSelector.getLastUpdated).subscribe(updateTime => {
       this.lastGameSaveTime = updateTime;
     });
+    this.render.canvasTarget = document.createElement('canvas');
+    this.render.animationLoop(0);
+    this.render.animating = true;
 
     // we can also utilize the async pipe with states.
     this.entireSaveState$ = this.store.select(gameSelector.getGameState);
