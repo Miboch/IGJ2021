@@ -1,5 +1,9 @@
-﻿import {FeedbackComponent} from './@routed/feedback/feedback.component';
+﻿import {AttributionComponent} from './@routed/attribution/attribution.component';
+import {ChangelogComponent} from './@routed/changelog/changelog.component';
+import {FeedbackComponent} from './@routed/feedback/feedback.component';
 import {GameComponent} from './@routed/game/game.component';
+import {ProfileComponent} from './@routed/profile/profile.component';
+import {SignInComponent} from './@routed/sign-in/sign-in.component';
 import {TestPageComponent} from './@routed/test-page/test-page.component';
 
 import {CanvasComponent} from './canvas/canvas.component';
@@ -37,8 +41,12 @@ export const components = [
 ];
 
 export const routedComponents = [
+  AttributionComponent,
+  ChangelogComponent,
   FeedbackComponent,
   GameComponent,
+  ProfileComponent,
+  SignInComponent,
   TestPageComponent,
 ];
 
@@ -57,6 +65,10 @@ export * from './rating/rating.component';
 export * from './star/star.component';
 export * from './toolbar/toolbar.component';
 
+export * from './@routed/attribution/attribution.component';
+export * from './@routed/changelog/changelog.component';
 export * from './@routed/feedback/feedback.component';
 export * from './@routed/game/game.component';
+export * from './@routed/profile/profile.component';
+export * from './@routed/sign-in/sign-in.component';
 export * from './@routed/test-page/test-page.component';
