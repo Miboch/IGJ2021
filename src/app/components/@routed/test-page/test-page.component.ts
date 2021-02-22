@@ -5,6 +5,7 @@ import {Store} from '@ngrx/store';
 import {GameState} from '../../../game/models/state/game-state';
 import * as gameSelector from '../../../game/store/selectors/game-state.selectors';
 import * as gameAction from '../../../game/store/actions/game-state.actions';
+import * as userSelector from '../../../store/selectors/user.selector';
 import {SaveStateModel} from '../../../game/models/state/save-state.model';
 
 @Component({
@@ -31,7 +32,6 @@ export class TestPageComponent implements OnInit {
 
     // we can also utilize the async pipe with states.
     this.entireSaveState$ = this.store.select(gameSelector.getGameState);
-
   }
 
   createWarn() {

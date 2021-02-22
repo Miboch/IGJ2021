@@ -1,0 +1,20 @@
+﻿@import 'theme';
+
+a {
+  color: $raspberry;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  &:hover {
+    color: $lemon;
+  }
+  span {
+  font-size: 14pt;
+    margin-right: 1rem;
+  }
+}
+
+ul {
+  list-style-type: none;
+}

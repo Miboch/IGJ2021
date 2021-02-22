@@ -1,7 +1,15 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {FeedbackComponent, GameComponent, TestPageComponent} from './components';
+import {
+  AttributionComponent, ChangelogComponent,
+  FeedbackComponent,
+  GameComponent,
+  ProfileComponent,
+  SignInComponent,
+  TestPageComponent
+} from './components';
 import {FeedbackResolver} from './resolvers/feedback.resolver';
+import {LoginGuard} from './guards/login.guard';
 
 const routes: Routes = [
   {
@@ -21,6 +29,28 @@ const routes: Routes = [
     path: 'feedback',
     resolve: {feedback: FeedbackResolver},
     component: FeedbackComponent
+  },
+  {
+    path: 'feedback/:id',
+    resolve: {feedback: FeedbackResolver},
+    component: FeedbackComponent
+  },
+  {
+    path: 'login',
+    component: SignInComponent
+  },
+  {
+    path: 'credits',
+    component: AttributionComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'changes',
+    component: ChangelogComponent
   }
 ];
 

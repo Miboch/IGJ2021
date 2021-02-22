@@ -1,0 +1,68 @@
+﻿<igj-page>
+  <section>
+    <div class="sign-in-overflow-container">
+      <igj-card class="pos" *ngIf="loggingIn" @loginCard>
+        <ng-template igjCardHeader>
+          <h1>Login</h1>
+        </ng-template>
+        <ng-template igjCardContent>
+          <form [formGroup]="loginGroup" (ngSubmit)="tryLogin()">
+
+            <div class="form-row">
+              <label for="username">Username</label>
+              <input type="text" id="username" formControlName="username">
+              <div class="errors" *ngIf="loginUsernameError">Username must be at least 3 characters</div>
+            </div>
+
+            <div class="form-row">
+              <label for="pw">Password</label>
+              <input type="password" id="pw" formControlName="password">
+              <div class="errors" *ngIf="loginPasswordError">Password is required</div>
+            </div>
+
+            <div class="button-row">
+              <button type="submit">Sign in</button>
+              <span class="accent-link" role="button" (click)="switchContext()">or create a new account</span>
+            </div>
+          </form>
+        </ng-template>
+      </igj-card>
+
+      <igj-card class="pos" *ngIf="!loggingIn" @signupCard>
+        <ng-template igjCardHeader>
+          <h1>Create Account</h1>
+        </ng-template>
+        <ng-template igjCardContent>
+          <form [formGroup]="signupGroup" (ngSubmit)="trySignup()">
+            <div class="form-row">
+              <label for="signup_username">Desired Username</label>
+              <input type="text" id="signup_username" formControlName="username" #username>
+              <div class="errors" *ngIf="signupUsernameError">Username Required</div>
+              <div class="errors" *ngIf="usernameTakenError">Username Taken</div>
+            </div>
+
+            <div class="form-row">
+              <label for="signup_pw">Desired Password</label>
+              <input type="password" id="signup_pw" formControlName="password">
+              <div class="errors" *ngIf="signupPasswordError">Password is required</div>
+            </div>
+
+            <div class="form-row">
+              <label for="signup_pw_repeat">Repeat Password</label>
+              <input type="password" id="signup_pw_repeat" formControlName="repeat" #matcher>
+              <div class="errors" *ngIf="passwordMismatchError">Passwords must match</div>
+            </div>
+
+            <p><b>Note:</b> We didn't spend a lot of time on site security, so maybe don't use your usual password</p>
+            <div class="button-row">
+              <button type="submit">Create Account</button>
+              <span class="accent-link" role="button" (click)="switchContext()">or login to existing account</span>
+            </div>
+          </form>
+        </ng-template>
+      </igj-card>
+
+
+    </div>
+  </section>
+</igj-page>

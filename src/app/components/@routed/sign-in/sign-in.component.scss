@@ -1,0 +1,63 @@
+﻿@import 'theme';
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+}
+
+.accent-link {
+  color: $raspberry;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 10pt;
+  &:hover {
+    color: $lemon;
+  }
+}
+
+p {
+  margin: 0 1rem;
+  color: lighten($surface-light, 25);
+  user-select: none;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-top: 2rem;
+}
+
+.sign-in-overflow-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+igj-card {
+  position: relative;
+}
+
+.form-row {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.errors {
+  position: absolute;
+  top:0;
+  right: 1rem;
+  color: $error;
+}

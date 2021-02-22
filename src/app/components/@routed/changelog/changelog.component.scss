@@ -1,0 +1,21 @@
+﻿@import 'theme';
+
+h2 {
+  background-color: $surface;
+  padding: 1.5rem;
+  color: $lemon;
+  user-select: none;
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  li {
+    padding: .5rem;
+    &:nth-child(2n) {
+      background-color: lighten($surface-light, 3);
+    }
+  }
+}
