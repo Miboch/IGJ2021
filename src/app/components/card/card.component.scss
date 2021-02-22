@@ -1,0 +1,54 @@
+﻿@import 'theme';
+
+.card-container {
+  border-radius: 4px;
+  width: 100%;
+  background-color: lighten($surface, 5);
+  margin: 1rem 0;
+  .card-header {
+    background-color: lighten($surface, 7);
+    padding: 1rem;
+    border-bottom: 1px solid #101010;
+    ::ng-deep {
+      h1, h2, h3, h4, h5 {
+        margin: 0;
+      }
+    }
+  }
+
+  &.surface {
+    ::ng-deep {
+      color: $text;
+    }
+  }
+
+  &.raspberry {
+    ::ng-deep {
+      color: $text;
+      .card-header {
+        background-image: linear-gradient(90deg, transparent 25%, transparentize($raspberry, .90));
+      }
+      h1, h2, h3, h4, h5 {
+        color: $raspberry;
+      }
+    }
+  }
+
+  &.lemon {
+    ::ng-deep {
+      color: $text;
+      .card-header {
+        background-image: linear-gradient(90deg, transparent 25%, transparentize($lemon, .90));
+      }
+      h1, h2, h3, h4, h5 {
+        color: $lemon;
+      }
+    }
+  }
+
+
+}
+
+.card-body {
+  padding: 1rem;
+}

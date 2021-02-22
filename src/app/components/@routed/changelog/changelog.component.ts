@@ -21,8 +21,8 @@ export class ChangelogComponent implements OnInit {
     this.changes = {
       "0.0.3": [
         "Added login system",
-        "Save Game Feature added",
-        "Added satellite sprite"
+        "Added satellite sprite",
+        "Added drill sprite"
       ],
       "0.0.2": [
         "setup host domain",

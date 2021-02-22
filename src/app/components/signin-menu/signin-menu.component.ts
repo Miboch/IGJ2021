@@ -49,7 +49,7 @@ export class SigninMenuComponent implements OnInit {
   }
 
   logout() {
-
+    this.loginService.logout();
   }
 
 

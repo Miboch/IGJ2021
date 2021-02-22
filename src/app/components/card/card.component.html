@@ -1,0 +1,13 @@
+﻿<div [classList]="classList">
+  <div class="card-inner">
+    <div class="card-header">
+      <ng-container *ngTemplateOutlet="cardHeader"></ng-container>
+    </div>
+    <div class="card-body">
+      <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+    </div>
+  </div>
+</div>
+<ng-template>
+  <ng-content></ng-content>
+</ng-template>

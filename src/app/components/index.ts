@@ -7,6 +7,7 @@ import {SignInComponent} from './@routed/sign-in/sign-in.component';
 import {TestPageComponent} from './@routed/test-page/test-page.component';
 
 import {CanvasComponent} from './canvas/canvas.component';
+import {CardComponent} from './card/card.component';
 import {FeedbackFormComponent} from './feedback-form/feedback-form.component';
 import {FormTypeSelectorComponent} from './form-type-selector/form-type-selector.component';
 import {HoverListComponent} from './hover-list/hover-list.component';
@@ -24,6 +25,7 @@ import {ToolbarComponent} from './toolbar/toolbar.component';
 
 export const components = [
   CanvasComponent,
+  CardComponent,
   FeedbackFormComponent,
   FormTypeSelectorComponent,
   HoverListComponent,
@@ -51,6 +53,7 @@ export const routedComponents = [
 ];
 
 export * from './canvas/canvas.component';
+export * from './card/card.component';
 export * from './feedback-form/feedback-form.component';
 export * from './form-type-selector/form-type-selector.component';
 export * from './hover-list/hover-list.component';
