@@ -7,9 +7,9 @@ import {
   ProfileComponent,
   SignInComponent,
   TestPageComponent
-} from './components';
-import {FeedbackResolver} from './resolvers/feedback.resolver';
-import {LoginGuard} from './guards/login.guard';
+} from './host/components';
+import {FeedbackResolver} from './host/resolvers/feedback.resolver';
+import {LoginGuard} from './host/guards/login.guard';
 
 const routes: Routes = [
   {

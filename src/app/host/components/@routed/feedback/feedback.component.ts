@@ -1,8 +1,6 @@
 ﻿import {Component, OnInit} from '@angular/core';
-import {FeedbackService} from '../../../services/feedback.service';
 import {FeedbackModel} from '../../../models/feedback.model';
-import {BehaviorSubject, Subject} from 'rxjs';
-import {FeedbackTypes} from '../../../models/feedback-types.model';
+import {BehaviorSubject} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

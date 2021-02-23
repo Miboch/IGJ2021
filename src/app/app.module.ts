@@ -6,21 +6,20 @@ import { AppComponent } from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {components, routedComponents} from './components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
-import {directives} from './directives';
 import { StoreModule } from '@ngrx/store';
 import {GameModule} from './game/game.module';
-import {ApplicationReducer} from './store';
-import {ApiInterceptor} from './interceptors/api.interceptor';
+import {UiModule} from './ui/ui.module';
+import {ApplicationReducer} from './host/store';
+import {ApiInterceptor} from './host/interceptors/api.interceptor';
+import {components, routedComponents} from './host/components';
 
 @NgModule({
   declarations: [
     AppComponent,
     ...components,
     ...routedComponents,
-    ...directives
   ],
   imports: [
     BrowserModule,
@@ -32,7 +31,8 @@ import {ApiInterceptor} from './interceptors/api.interceptor';
     BrowserAnimationsModule,
     MaterialModule,
     StoreModule.forRoot(ApplicationReducer),
-    GameModule
+    GameModule,
+    UiModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
     <span>{{title}}</span>
     <span role="button" class="fa fa-times button-like" (click)="closeButtonEmitter.emit()"></span>
   </div>
-  <div class="toaster-content">
+  <div class="toaster-content" *ngIf="message">
     {{message}}
   </div>
   <div class="timeout-animation"></div>

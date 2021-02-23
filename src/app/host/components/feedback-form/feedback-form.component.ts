@@ -1,7 +1,7 @@
 ﻿import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FeedbackService} from '../../services/feedback.service';
-import {ToastService} from '../../services/toast-service';
+import {ToastService} from '../../../ui/services/toast-service';
 
 @Component({
   selector: 'igj-feedback-form',

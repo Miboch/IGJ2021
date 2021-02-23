@@ -1,5 +1,4 @@
 ﻿import {animate, style, transition, trigger} from '@angular/animations';
-import {delay} from 'rxjs/operators';
 
 export const slideAnimation = trigger('panelSlide', [
   transition(':enter', [
