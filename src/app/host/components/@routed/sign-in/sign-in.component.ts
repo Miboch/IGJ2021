@@ -1,10 +1,10 @@
 ﻿import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {slideAnimation, slideLoginCard, slideSignupCard} from '../../../animations/slide.animation';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../../services/login.service';
 import {fromEvent, of, Subscription} from 'rxjs';
 import {catchError, debounceTime, distinctUntilChanged, filter, map, tap} from 'rxjs/operators';
 import {UserDtoModel} from '../../../models/user-dto.model';
+import {slideLoginCard, slideSignupCard} from '../../../../ui/animations/slide.animation';
 
 @Component({
   templateUrl: './sign-in.component.html',

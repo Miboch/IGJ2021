@@ -1,4 +1,4 @@
-﻿import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+﻿import {Component, OnInit} from '@angular/core';
 import {HoverMenuModel} from '../../models/hover-menu.model';
 import {Router} from '@angular/router';
 import {LoginService} from '../../services/login.service';

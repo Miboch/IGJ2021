@@ -6,14 +6,12 @@ import {ModalContentDirective} from './modal-content.directive';
 import {ModalHeaderDirective} from './modal-header.directive';
 import {OverlayPanelHeaderDirective} from './overlay-panel-header.directive';
 import {ToastOutletDirective} from './toast-outlet.directive';
-import {LoadingDirective} from './loading.directive';
 
-export const directives = [
+export const uiDirectives = [
   CardContentDirective,
   CardHeaderDirective,
   ListHeaderDirective,
   ListItemDirective,
-  LoadingDirective,
   ModalContentDirective,
   ModalHeaderDirective,
   OverlayPanelHeaderDirective,
@@ -24,7 +22,6 @@ export * from './card-content.directive';
 export * from './card-header.directive';
 export * from './list-header.directive';
 export * from './list-item.directive';
-export * from './loading.directive';
 export * from './modal-content.directive';
 export * from './modal-header.directive';
 export * from './overlay-panel-header.directive';

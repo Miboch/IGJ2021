@@ -3,6 +3,7 @@ import {gameComponents} from './components';
 import {gameDirectives} from './directives';
 import {StoreModule} from '@ngrx/store';
 import {GameStateReducers} from './store';
+import {UiModule} from '../ui/ui.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import {GameStateReducers} from './store';
       ...gameDirectives
     ],
     imports: [
-      StoreModule.forFeature('game', GameStateReducers)
+      StoreModule.forFeature('game', GameStateReducers),
+      UiModule
     ],
   }
 )

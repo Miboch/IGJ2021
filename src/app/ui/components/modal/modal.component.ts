@@ -5,7 +5,6 @@
   OnChanges,
   OnDestroy,
   OnInit,
-  Output,
   SimpleChanges,
   TemplateRef
 } from '@angular/core';

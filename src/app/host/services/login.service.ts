@@ -1,7 +1,6 @@
 ﻿import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
 import {UserInformationModel} from '../models/user-information.model';
 import {UserDtoModel} from '../models/user-dto.model';
 import {TokenResponseModel} from '../models/token-response.model';
@@ -12,7 +11,9 @@ import {ApplicationState} from '../models/state/application-state';
 import * as userAction from '../store/actions/user.actions';
 import * as userSelect from '../store/selectors/user.selector';
 import {Router} from '@angular/router';
-import {ToastService} from './toast-service';
+import {environment} from '../../../environments/environment';
+import {ToastService} from '../../ui/services/toast-service';
+
 
 
 @Injectable({providedIn: 'root'})
