@@ -59,6 +59,14 @@ In order to have the full functionality of the site, you must also clone and run
 * Reconfigure the `src/proxy.conf.json` file in the angular application to point at `http://localhost:8080`
 * Run the API and the angular application.
 
+## Project Structure
+
+The project is divided into parent directories under the `/app` folder based off their major "responsibility".
+
+ - **game:** All code which is directly related to the game.
+ - **ui:** the common reusable ui components. These are imported in the other modules
+ - **host:** The components which relate to the "host application." Features such as login, resolvers and auth guards.
+ - **debugger:** Debugging tools and components, separated into its own module to easily separate out when building with the `--prod` flag.
 
 ## Special Thanks
 [Special thanks to Arkraga on twitch.tv for creating art assets for our team](https://twitch.tv/arkraga)
