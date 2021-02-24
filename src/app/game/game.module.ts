@@ -1,8 +1,8 @@
 ﻿import {NgModule} from '@angular/core';
-import {gameComponents} from './components';
-import {gameDirectives} from './directives';
+import {gameComponents} from './angular';
+import {gameDirectives} from './angular';
 import {StoreModule} from '@ngrx/store';
-import {GameStateReducers} from './store';
+import {GameStateReducers} from './angular';
 import {UiModule} from '../ui/ui.module';
 
 @NgModule({
@@ -23,3 +23,4 @@ import {UiModule} from '../ui/ui.module';
 export class GameModule {
 
 }
+

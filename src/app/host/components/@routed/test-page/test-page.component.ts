@@ -1,13 +1,11 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {GameState} from '../../../../game/models/state/game-state';
-import * as gameSelector from '../../../../game/store/selectors/game-state.selectors';
-import * as gameAction from '../../../../game/store/actions/game-state.actions';
-import * as userSelector from '../../../store/selectors/user.selector';
-import {SaveStateModel} from '../../../../game/models/state/save-state.model';
 import {ToastService} from '../../../../ui/services/toast-service';
 import {RendererSystem} from '../../../../game/systems/renderer.system';
+import {GameState, SaveStateModel} from '../../../../game/angular';
+import * as gameSelector from '../../../../game/angular/store/selectors/game-state.selectors';
+import * as gameAction from '../../../../game/angular/store/actions/game-state.actions';
 
 
 @Component({
