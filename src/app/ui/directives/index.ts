@@ -15,7 +15,7 @@ export const uiDirectives = [
   ModalContentDirective,
   ModalHeaderDirective,
   OverlayPanelHeaderDirective,
-  ToastOutletDirective
+  ToastOutletDirective,
 ];
 
 export * from './card-content.directive';

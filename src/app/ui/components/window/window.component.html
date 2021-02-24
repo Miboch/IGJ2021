@@ -1,0 +1,9 @@
+﻿<div class="window-wrapper" cdkDrag *ngIf="display">
+  <div class="window-title" cdkDragHandle>
+    <h2>{{windowTitle}}</h2>
+    <button class="btn" (click)="closeWindow()"><span class="fa fa-times"></span></button>
+  </div>
+  <div class="window-body">
+    <ng-content></ng-content>
+  </div>
+</div>

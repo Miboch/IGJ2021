@@ -6,6 +6,7 @@ import {OverlayPanelComponent} from './overlay-panel/overlay-panel.component';
 import {PageComponent} from './page/page.component';
 import {ToastComponent} from './toast/toast.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
+import {WindowComponent} from './window/window.component';
 
 
 export const UiComponents = [
@@ -16,8 +17,9 @@ export const UiComponents = [
   OverlayPanelComponent,
   PageComponent,
   ToastComponent,
-  ToolbarComponent
-]
+  ToolbarComponent,
+  WindowComponent
+];
 
 export * from './card/card.component';
 export * from './hover-list/hover-list.component';
@@ -27,3 +29,4 @@ export * from './overlay-panel/overlay-panel.component';
 export * from './page/page.component';
 export * from './toast/toast.component';
 export * from './toolbar/toolbar.component';
+export * from './window/window.component';
