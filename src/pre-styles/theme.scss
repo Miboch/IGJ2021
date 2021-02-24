@@ -20,18 +20,18 @@ $info: #2C5EB5;
 $info-light: #4C80D9;
 
 
-@mixin shadow($towards: 'down') {
+@mixin shadow($towards: 'down', $mgt: 4) {
   @if $towards == 'right' {
-    box-shadow: 4px 0 4px -2px #000;
+    box-shadow: #{$mgt}px 0 #{$mgt}px  -2px #000;
   }
   @if $towards == 'left' {
-    box-shadow: -4px 0 4px -2px #000;
+    box-shadow: -#{$mgt}px 0 #{$mgt}px -2px #000;
   }
   @if $towards == 'down' {
-    box-shadow: 0 4px 4px -2px #000;
+    box-shadow: 0 #{$mgt}px #{$mgt}px -2px #000;
   }
   @if $towards == 'up' {
-    box-shadow: 0 -4px 4px -2px #000;
+    box-shadow: 0 -#{$mgt}px #{$mgt}px -2px #000;
   }
 }
 

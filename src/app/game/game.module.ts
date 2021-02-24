@@ -1,4 +1,5 @@
-﻿import {NgModule} from '@angular/core';
+﻿import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {gameComponents} from './angular';
 import {gameDirectives} from './angular';
 import {StoreModule} from '@ngrx/store';
@@ -16,6 +17,7 @@ import {UiModule} from '../ui/ui.module';
     ],
     imports: [
       StoreModule.forFeature('game', GameStateReducers),
+      CommonModule,
       UiModule
     ],
   }
