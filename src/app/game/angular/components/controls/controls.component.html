@@ -1,0 +1,10 @@
+<igj-card>
+  <ng-template igjCardHeader>
+    <h2>Craft</h2>
+  </ng-template>
+  <ng-template igjCardContent>
+    <button class="btn info" *ngFor="let recipe of recipes" (click)="craft(recipe)" [disabled]="!canCraft(recipe)">
+      <b>{{recipe.name | uppercase}}</b> - Ore: {{recipe.ore}}, Energy: {{recipe.energy}}
+    </button>
+  </ng-template>
+</igj-card>

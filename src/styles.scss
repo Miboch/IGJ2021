@@ -84,7 +84,7 @@ h1, h2, h3, h4, h5 {
   border: none;
   cursor: pointer;
   color: $text;
-  margin: 0 .25rem;
+  margin: 0 .25rem .5rem .25rem;
   background-color: lighten($surface, 7);
   &:hover {
     background-image: radial-gradient(transparentize(lighten($surface-light, 20), .65), transparent);
@@ -116,6 +116,14 @@ h1, h2, h3, h4, h5 {
     }
   }
 
+  &:disabled {
+    background-color: lighten($surface, 7);
+    cursor: not-allowed;
+    &:hover {
+      background-image: none;
+      @include shadow('down', 2);
+    }
+  }
 }
 
 .button-like {

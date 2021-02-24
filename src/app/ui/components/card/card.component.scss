@@ -9,6 +9,7 @@
     background-color: lighten($surface, 7);
     padding: 1rem;
     border-bottom: 1px solid #101010;
+    border-radius: 4px 4px 0 0;
     ::ng-deep {
       h1, h2, h3, h4, h5 {
         margin: 0;

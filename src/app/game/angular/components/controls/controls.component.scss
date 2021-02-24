@@ -1,0 +1,8 @@
+@import "theme";
+
+.btn {
+  width: 49%;
+  @include if-small {
+    width: 98%;
+  }
+}
