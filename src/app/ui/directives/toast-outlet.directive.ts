@@ -2,10 +2,8 @@
   ComponentFactory,
   ComponentFactoryResolver, ComponentRef,
   Directive,
-  ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
   ViewContainerRef
 } from '@angular/core';
 import {ToastService} from '../services/toast-service';

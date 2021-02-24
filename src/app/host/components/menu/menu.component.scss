@@ -63,6 +63,11 @@ ul {
       align-items: center;
       justify-content: center;
       transition: ease-in-out 90ms;
+
+    &:hover {
+      background-color: $lemon;
+      color: $text;
+    }
     }
 
     &.activated {

@@ -1,0 +1,42 @@
+﻿@import 'theme';
+
+.window-wrapper {
+  width: 100%;
+  max-width: 660px;
+  height: auto;
+  background-color: lighten($surface, 11);
+  position: fixed;
+  z-index: 900;
+  top: 20%;
+  left: 25%;
+  @include shadow();
+}
+
+.window-title {
+  height: 40px;
+  background-color: lighten($surface, 16);
+  border-bottom: 1px solid #101010;
+  cursor: move;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+
+  h2 {
+    margin: 0;
+    font-size: 14pt;
+  }
+}
+
+.btn {
+  .fa {
+    font-size: 12pt;
+
+  }
+}
+
+.window-body {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 1rem;
+}

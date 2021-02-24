@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from '../material.module';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [...uiDirectives, ...UiComponents],
@@ -13,7 +14,8 @@ import {MaterialModule} from '../material.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    DragDropModule
   ],
   exports: [...uiDirectives, ...UiComponents],
 })

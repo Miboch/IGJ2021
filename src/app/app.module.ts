@@ -14,6 +14,8 @@ import {UiModule} from './ui/ui.module';
 import {ApplicationReducer} from './host/store';
 import {ApiInterceptor} from './host/interceptors/api.interceptor';
 import {components, routedComponents} from './host/components';
+import {environment} from '../environments/environment';
+import {DebuggingModule} from './debugging/debugging.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {components, routedComponents} from './host/components';
     MaterialModule,
     StoreModule.forRoot(ApplicationReducer),
     GameModule,
-    UiModule
+    UiModule,
+    environment.production ? [] : DebuggingModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent]

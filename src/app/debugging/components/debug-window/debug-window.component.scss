@@ -1,0 +1,13 @@
+﻿@import 'theme';
+
+fieldset {
+  border: 1px solid $surface;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  legend {
+    color: $raspberry;
+    font-weight: 600;
+    padding: 0 1rem;
+  }
+}

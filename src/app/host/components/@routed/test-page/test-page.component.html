@@ -3,45 +3,28 @@
     <h2>Test Toaster</h2>
     <label for="whatever">Modal Message</label>
     <textarea name="whatever" id="whatever" cols="30" rows="10" [(ngModel)]="textValue"></textarea><br>
-    <button (click)="createSuccess()">Create Success</button>
-    <button (click)="createWarn()">Create Warning</button>
-    <button (click)="createError()">Create Error</button>
-    <button (click)="createInfo()">Create Info</button>
+    <button (click)="createSuccess()" class="btn">Create Success</button>
+    <button (click)="createWarn()" class="btn">Create Warning</button>
+    <button (click)="createError()" class="btn">Create Error</button>
+    <button (click)="createInfo()" class="btn">Create Info</button>
   </section>
-
   <section>
     <h2>Test Modal</h2>
-    <button class="raspberry" (click)="openModal()">Open a moodal</button>
+    <button class="btn" (click)="openModal()">Open a moodal</button>
   </section>
-
-  <section>
-    <h2>Hover Lists</h2>
-    <igj-hover-list [items]="[1,2,3,4,5,100]">
-      <ng-template igjListHeader>
-        <div class="boxed">This is a hoverable element</div>
-      </ng-template>
-      <ng-template igjListItem let-item>
-        <div class="wide-item">
-          {{item}}
-        </div>
-      </ng-template>
-    </igj-hover-list>
-  </section>
-
   <section>
     <h2>Game state store example</h2>
     {{lastGameSaveTime|date: 'yyyy-MM-dd HH:mm:ss'}}
     <br>
-    <button class="raspberry" (click)="updateLastSaveTime()">Update Save Time</button>
-    <button class="raspberry" (click)="updateExampleProp()">Update Example Property with random text</button>
-    <button class="raspberry" (click)="updateBoth()">Update Both</button>
-
+    <button class="btn" (click)="updateLastSaveTime()">Update Save Time</button>
+    <button class="btn" (click)="updateExampleProp()">Update Example Property with random text</button>
+    <button class="btn raspberry" (click)="updateBoth()">Update Both</button>
+    <br><br>
     <fieldset>
       <legend>State Object</legend>
       {{(entireSaveState$|async)|json}}
     </fieldset>
   </section>
-
   <section>
     <h2>Card layout</h2>
     <igj-card>
@@ -68,11 +51,15 @@
       </ng-template>
     </igj-card>
 
-
   </section>
 
-
-
+  <section>
+    <h2>Buttons</h2>
+    <button class="btn">Button</button>
+    <button class="btn raspberry">Button</button>
+    <button class="btn lemon">Button</button>
+    <button class="btn info">Button</button>
+  </section>
 </igj-page>
 
 <igj-modal [modalDisplay$]="modalDispaySubject$">
@@ -84,3 +71,7 @@
     minima nobis optio rerum voluptatum.
   </ng-template>
 </igj-modal>
+
+<igj-window>
+  hej
+</igj-window>
