@@ -24,7 +24,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(userSelect.userDetails).subscribe(details => {
       this.userInfo = details;
-      console.log(this.userInfo)
     });
     this.store.select(userSelect.getUserToken).subscribe(r => {
       this.token = r;

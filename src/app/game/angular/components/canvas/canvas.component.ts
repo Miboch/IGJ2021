@@ -1,40 +1,50 @@
 ﻿import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {RendererSystem} from '../../../systems/renderer.system';
+import {DimensionModel} from '../../models/dimension.model';
 
 @Component({
   selector: 'igj-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
-
 export class CanvasComponent implements OnInit, AfterViewInit {
   @ViewChild('cvs') canvas!: ElementRef<HTMLCanvasElement>;
-  @Input() width: number = 800;
-  @Input() height: number = 600;
-  ctx!: CanvasRenderingContext2D;
+  @Input() width: number = 990;
+  @Input() height: number = 650;
 
-  constructor() {
+  constructor(private render: RendererSystem) {
   }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit() {
-    this.onCanvasReady();
+    const checkCanvas = setInterval(() => {
+      if (this.canvas) {
+        clearInterval(checkCanvas)
+        this.onCanvasReady();
+      }
+    }, 10);
   }
-
 
   onCanvasReady() {
-      this.ctx = <CanvasRenderingContext2D>this.canvas.nativeElement.getContext("2d");
-      this.ctx.fillStyle = "#101010";
-      this.ctx.fillRect(0, 0, this.width, this.height);
+    this.render.canvasTarget = this.canvas.nativeElement;
+    this.render.animationLoop(0);
+    this.render.animating = true;
   }
 
-  get widthInPix() {
+  get pxHeight() {
+    return this.height + "px";
+  }
+
+  get pxWidth() {
     return this.width + "px";
   }
 
-  get heightInPx() {
-    return this.height + "px";
+  resizeCanvas(dim: DimensionModel) {
+    this.width = dim.width;
+    this.height = dim.height;
+    this.render.canvasSize = dim;
   }
 
 }

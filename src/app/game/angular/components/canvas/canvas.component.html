@@ -1,1 +1,4 @@
-﻿<canvas [width]="width" [height]="height" [style.width]="widthInPix" [style.height]="heightInPx" #cvs></canvas>
+﻿<canvas [width]="width" [height]="height" #cvs [style.width]="pxWidth" [style.height]="pxHeight"></canvas>
+
+<div class="size-spy" igjSizeSpy (sizeEvent)="resizeCanvas($event)">
+</div>
