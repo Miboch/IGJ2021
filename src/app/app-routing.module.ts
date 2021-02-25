@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {
-  AttributionComponent, ChangelogComponent,
+  AboutComponent,
   FeedbackComponent,
   GameComponent,
   ProfileComponent,
@@ -40,17 +40,13 @@ const routes: Routes = [
     component: SignInComponent
   },
   {
-    path: 'credits',
-    component: AttributionComponent
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [LoginGuard]
-  },
-  {
-    path: 'changes',
-    component: ChangelogComponent
   }
 ];
 

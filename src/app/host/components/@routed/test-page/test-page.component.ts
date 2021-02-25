@@ -31,9 +31,6 @@ export class TestPageComponent implements OnInit {
     this.store.select(gameSelector.getLastUpdated).subscribe(updateTime => {
       this.lastGameSaveTime = updateTime;
     });
-    this.render.canvasTarget = document.createElement('canvas');
-    this.render.animationLoop(0);
-    this.render.animating = true;
 
     // we can also utilize the async pipe with states.
     this.entireSaveState$ = this.store.select(gameSelector.getGameState);

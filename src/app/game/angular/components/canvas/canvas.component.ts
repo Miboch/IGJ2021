@@ -1,4 +1,4 @@
-﻿import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+﻿import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RendererSystem} from '../../../systems/renderer.system';
 import {DimensionModel} from '../../models/dimension.model';
 
@@ -7,7 +7,7 @@ import {DimensionModel} from '../../models/dimension.model';
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
-export class CanvasComponent implements OnInit, AfterViewInit {
+export class CanvasComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('cvs') canvas!: ElementRef<HTMLCanvasElement>;
   @Input() width: number = 990;
   @Input() height: number = 650;
@@ -27,9 +27,13 @@ export class CanvasComponent implements OnInit, AfterViewInit {
     }, 10);
   }
 
+  ngOnDestroy() {
+    this.render.animating = false;
+  }
+
   onCanvasReady() {
     this.render.canvasTarget = this.canvas.nativeElement;
-    this.render.animationLoop(0);
+    this.render.startAnimationLoop();
     this.render.animating = true;
   }
 

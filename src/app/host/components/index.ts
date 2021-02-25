@@ -1,5 +1,4 @@
-﻿import {AttributionComponent} from './@routed/attribution/attribution.component';
-import {ChangelogComponent} from './@routed/changelog/changelog.component';
+﻿import {AboutComponent} from './@routed/about/about.component';
 import {FeedbackComponent} from './@routed/feedback/feedback.component';
 import {GameComponent} from './@routed/game/game.component';
 import {ProfileComponent} from './@routed/profile/profile.component';
@@ -26,8 +25,7 @@ export const components = [
   ];
 
 export const routedComponents = [
-  AttributionComponent,
-  ChangelogComponent,
+  AboutComponent,
   FeedbackComponent,
   GameComponent,
   ProfileComponent,
@@ -43,8 +41,7 @@ export * from './rating/rating.component';
 export * from './signin-menu/signin-menu.component';
 export * from './star/star.component';
 
-export * from './@routed/attribution/attribution.component';
-export * from './@routed/changelog/changelog.component';
+export * from './@routed/about/about.component';
 export * from './@routed/feedback/feedback.component';
 export * from './@routed/game/game.component';
 export * from './@routed/profile/profile.component';

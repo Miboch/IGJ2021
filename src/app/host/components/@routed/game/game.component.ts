@@ -15,21 +15,6 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.entitySystem.createEntitiy().addComponents(
-    //   new Transform(0, 0, 2, 40),
-    //   new Sprite("assets/game/drill.png"),
-    // );
-    //
-    // this.entitySystem.createEntitiy().addComponents(
-    //   new Transform(300, 500, 2),
-    //   new Sprite("assets/game/drill.png")
-    // );
-    //
-    // this.entitySystem.createEntitiy().addComponents(
-    //   new Transform(200, 310, 1),
-    //   new Sprite("assets/game/satellite.png"),
-    //   new PowerGenerator(10)
-    // );
 
   }
 

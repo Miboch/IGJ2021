@@ -19,6 +19,7 @@ export class RendererSystem {
   private canvasHeight = 0;
   private _animating = false;
   private scaling = 1;
+  private firstTime = true;
 
   lastFrame: number = 0;
   animationEvent: Subject<number> = new Subject<number>();
@@ -56,9 +57,16 @@ export class RendererSystem {
     this.scaling = Number((dimension.width / originalCanvasWidth).toFixed(2));
   }
 
-  animationLoop(time: number) {
+  private animationLoop(time: number) {
     this.animationEvent.next(time);
     requestAnimationFrame((ev) => this.animationLoop(ev));
+  }
+
+  startAnimationLoop() {
+    if (this.firstTime) {
+      this.firstTime = false;
+      this.animationLoop(0);
+    }
   }
 
   clearCanvas() {
@@ -82,10 +90,10 @@ export class RendererSystem {
       const scale = this.scaling * transform.scale;
       // this.context.translate(this.canvasElement.width / 2, this.canvasElement.height / 2)
       this.context.setTransform(scale, 0, 0, scale, transform.x * this.scaling, transform.y * this.scaling);
-      this.context.rotate(transform.rot+= 0.1);
+      this.context.rotate(transform.rot += 0.1);
       transform.x += 1;
-      if(transform.x > this.canvasWidth) transform.x = 0;
-      this.context.drawImage(sprite.image,  (-sprite.image.width / 2), (-sprite.image.height / 2));
+      if (transform.x > this.canvasWidth) transform.x = 0;
+      this.context.drawImage(sprite.image, (-sprite.image.width / 2), (-sprite.image.height / 2));
       this.context.setTransform(1, 0, 0, 1, 0, 0);
     }
   }

@@ -1,0 +1,44 @@
+﻿@import 'theme';
+
+a {
+  color: $raspberry;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  &:hover {
+    color: $lemon;
+  }
+  span {
+    font-size: 14pt;
+    margin-right: 1rem;
+  }
+}
+
+h1 {
+  margin-top: 4rem;
+}
+
+h3 {
+  background-color: $surface;
+  padding: .5rem;
+  color: $lemon;
+  user-select: none;
+  margin: 0;
+}
+
+h3 {
+  padding: .5rem;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+  li {
+    padding: .5rem;
+    &:nth-child(2n) {
+      background-color: lighten($surface-light, 3);
+    }
+  }
+}
