@@ -28,13 +28,10 @@ export class CanvasComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.render.animating = false;
   }
 
   onCanvasReady() {
     this.render.canvasTarget = this.canvas.nativeElement;
-    this.render.startAnimationLoop();
-    this.render.animating = true;
   }
 
   get pxHeight() {

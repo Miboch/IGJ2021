@@ -6,6 +6,7 @@ import {RendererSystem} from '../../../../game/systems/renderer.system';
 import {GameState, SaveStateModel} from '../../../../game/angular';
 import * as gameSelector from '../../../../game/angular/store/selectors/game-state.selectors';
 import * as gameAction from '../../../../game/angular/store/actions/game-state.actions';
+import {TimerSystem} from '../../../../game/systems/timer.system';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class TestPageComponent implements OnInit {
 
   constructor(private toasterService: ToastService,
               private store: Store<GameState>,
-              private render: RendererSystem) {
+              private render: RendererSystem,
+              private timer: TimerSystem) {
     this.modalDispaySubject$ = new Subject<boolean>();
   }
 

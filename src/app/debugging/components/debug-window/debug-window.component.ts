@@ -1,5 +1,6 @@
 ﻿import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
+import {TimerSystem} from '../../../game/systems/timer.system';
 
 @Component({
   templateUrl: './debug-window.component.html',
@@ -8,8 +9,8 @@ import {Observable} from 'rxjs';
 
 export class DebugWindowComponent implements OnInit {
   displayObserve: Observable<boolean>;
-
-  constructor() {
+  setPaused = true;
+  constructor(private timer: TimerSystem) {
     this.displayObserve = new Observable<boolean>();
   }
 
@@ -18,6 +19,11 @@ export class DebugWindowComponent implements OnInit {
 
   set displaystateObservable(observable: Observable<boolean>) {
     this.displayObserve = observable;
+  }
+
+  pauseUnpause() {
+    this.timer.pause = this.setPaused;
+    this.setPaused = !this.setPaused;
   }
 
 }
