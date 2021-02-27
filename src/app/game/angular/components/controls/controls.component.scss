@@ -6,3 +6,10 @@
     width: 98%;
   }
 }
+
+.btn-resource {
+  cursor: default;
+  &:hover {
+    box-shadow: none;
+  }
+}

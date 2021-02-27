@@ -5,7 +5,12 @@
  */
 export interface SaveStateModel {
   lastUpdated: Date,
-  exampleProperty: string;
+  ore: number,
+  energy: number,
+  drills: number,
+  satellites: number,
+  drillFactories: number,
+  satelliteFactories: number
 }
 
 /**
@@ -15,5 +20,10 @@ export interface SaveStateModel {
  */
 export interface SaveStateTransfer {
   lastUpdated?: Date,
-  exampleProperty?: string;
+  ore?: number,
+  energy?: number,
+  drills?: number,
+  satellites?: number,
+  drillFactories?: number,
+  satelliteFactories?: number
 }

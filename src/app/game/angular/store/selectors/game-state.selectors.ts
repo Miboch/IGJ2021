@@ -17,3 +17,13 @@ export const getLastUpdated: MemoizedSelector<object, any> = createSelector(
   getGameState,
   (saveState: SaveStateModel) => saveState.lastUpdated
 );
+
+export const getEnergy: MemoizedSelector<object, any> = createSelector(
+  getGameState,
+  (saveState: SaveStateModel) => saveState.energy
+);
+
+export const getOre: MemoizedSelector<object, any> = createSelector(
+  getGameState,
+  (saveState: SaveStateModel) => saveState.ore
+);

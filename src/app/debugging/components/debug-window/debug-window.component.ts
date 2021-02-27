@@ -1,5 +1,7 @@
 ﻿import {Component, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
 import {Observable} from 'rxjs';
+import { addEnergy, addOre, GameState } from 'src/app/game/angular';
 import {TimerSystem} from '../../../game/systems/timer.system';
 
 @Component({
@@ -10,7 +12,7 @@ import {TimerSystem} from '../../../game/systems/timer.system';
 export class DebugWindowComponent implements OnInit {
   displayObserve: Observable<boolean>;
   setPaused = true;
-  constructor(private timer: TimerSystem) {
+  constructor(private timer: TimerSystem, private store: Store<GameState>) {
     this.displayObserve = new Observable<boolean>();
   }
 
@@ -26,4 +28,11 @@ export class DebugWindowComponent implements OnInit {
     this.setPaused = !this.setPaused;
   }
 
+  addEnergy(amount: number) {
+    this.store.dispatch(addEnergy( { energy: amount } ))
+  }
+
+  addOre(amount: number) {
+    this.store.dispatch(addOre( { ore: amount } ))
+  }
 }
