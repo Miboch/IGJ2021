@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
     "@ngrx/store": "11.0.1",
+    "chart.js": "^2.9.4",
     "jwt-decode": "^3.1.2",
     "rpg-awesome": "^0.2.0",
     "rxjs": "~6.6.0",

@@ -6,6 +6,7 @@ import {RendererSystem} from '../../../../game/systems/renderer.system';
 import {GameState, SaveStateModel} from '../../../../game/angular';
 import * as gameSelector from '../../../../game/angular/store/selectors/game-state.selectors';
 import * as gameAction from '../../../../game/angular/store/actions/game-state.actions';
+import {TimerSystem} from '../../../../game/systems/timer.system';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class TestPageComponent implements OnInit {
 
   constructor(private toasterService: ToastService,
               private store: Store<GameState>,
-              private render: RendererSystem) {
+              private render: RendererSystem,
+              private timer: TimerSystem) {
     this.modalDispaySubject$ = new Subject<boolean>();
   }
 
@@ -31,9 +33,6 @@ export class TestPageComponent implements OnInit {
     this.store.select(gameSelector.getLastUpdated).subscribe(updateTime => {
       this.lastGameSaveTime = updateTime;
     });
-    this.render.canvasTarget = document.createElement('canvas');
-    this.render.animationLoop(0);
-    this.render.animating = true;
 
     // we can also utilize the async pipe with states.
     this.entireSaveState$ = this.store.select(gameSelector.getGameState);
@@ -65,13 +64,9 @@ export class TestPageComponent implements OnInit {
   }
 
   updateExampleProp() {
-
-
     let exampleValue = "********************************".split("").map(star => {
       return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
     }).join('');
-
-
     this.store.dispatch(gameAction.assignState({overwrite: {exampleProperty: exampleValue}}))
   }
 
@@ -86,13 +81,6 @@ export class TestPageComponent implements OnInit {
           lastUpdated: new Date()
         }
     }));
-
   }
-
-
-  handleClick(event: any) {
-    console.log(event);
-  }
-
 
 }

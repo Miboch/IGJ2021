@@ -1,13 +1,12 @@
 ﻿import {Component, OnInit} from '@angular/core';
 
 @Component({
-  templateUrl: './changelog.component.html',
-  styleUrls: ['./changelog.component.scss']
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss']
 })
 
-export class ChangelogComponent implements OnInit {
+export class AboutComponent implements OnInit {
   changes: { [key: string]: string[] } = {}
-
 
   constructor() {
     this.setChangelog();
@@ -15,7 +14,6 @@ export class ChangelogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 
   setChangelog() {
     this.changes = {
@@ -40,7 +38,6 @@ export class ChangelogComponent implements OnInit {
       ],
 
     };
-
 
   }
 }

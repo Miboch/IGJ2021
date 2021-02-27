@@ -1,18 +1,19 @@
-﻿import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+﻿import {AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {RendererSystem} from '../../../systems/renderer.system';
 import {DimensionModel} from '../../models/dimension.model';
+import {CursorSystem} from '../../../systems/cursor.system';
 
 @Component({
   selector: 'igj-canvas',
   templateUrl: './canvas.component.html',
   styleUrls: ['./canvas.component.scss']
 })
-export class CanvasComponent implements OnInit, AfterViewInit {
+export class CanvasComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('cvs') canvas!: ElementRef<HTMLCanvasElement>;
   @Input() width: number = 990;
   @Input() height: number = 650;
 
-  constructor(private render: RendererSystem) {
+  constructor(private render: RendererSystem, private cursor: CursorSystem) {
   }
 
   ngOnInit(): void {
@@ -27,10 +28,12 @@ export class CanvasComponent implements OnInit, AfterViewInit {
     }, 10);
   }
 
+  ngOnDestroy() {
+  }
+
   onCanvasReady() {
     this.render.canvasTarget = this.canvas.nativeElement;
-    this.render.animationLoop(0);
-    this.render.animating = true;
+    this.cursor.attachedElement = this.canvas.nativeElement;
   }
 
   get pxHeight() {

@@ -1,5 +1,5 @@
 ﻿import {Injectable} from '@angular/core';
-import {of, Subject} from 'rxjs';
+import {of, Subject, Subscription} from 'rxjs';
 import {filter, switchMap} from 'rxjs/operators';
 import {DimensionModel} from '../angular/models/dimension.model';
 import {EntityManagerSystem} from './entity-manager.system';
@@ -8,6 +8,8 @@ import {ComponentTypes} from '../components/component-types';
 import {ComponentManagerSystem} from './component-manager.system';
 import {Sprite} from '../components/sprite';
 import {Transform} from '../components/transform';
+import {TimerSystem} from './timer.system';
+import {Cursor} from '../components/cursor';
 
 const originalCanvasWidth = 990;
 
@@ -17,24 +19,17 @@ export class RendererSystem {
   private context!: CanvasRenderingContext2D;
   private canvasWidth = 0;
   private canvasHeight = 0;
-  private _animating = false;
-  private scaling = 1;
+  public scaling = 1;
+  private animationSubscription: Subscription;
+  private updatesPerSecond = 60;
 
-  lastFrame: number = 0;
-  animationEvent: Subject<number> = new Subject<number>();
-
-  constructor(private entityManager: EntityManagerSystem, private componentManager: ComponentManagerSystem) {
-    this.animationEvent.pipe(
-      switchMap(frameTime => {
-        let time = of(frameTime - this.lastFrame);
-        this.lastFrame = frameTime;
-        return time;
-      }),
-      filter(_ => this._animating && Boolean(this.canvasElement))
-    ).subscribe(deltaTime => {
-      this.clearCanvas();
-      this.renderActiveEntities(deltaTime, this.entityManager.activeEntities);
-    })
+  constructor(private entityManager: EntityManagerSystem,
+              private componentManager: ComponentManagerSystem,
+              private timer: TimerSystem) {
+    this.animationSubscription = this.timer.getWithUPS(this.updatesPerSecond).pipe(filter(_ => Boolean(this.canvasElement)))
+      .subscribe(deltaTime => {
+        this.renderLoop(deltaTime);
+      });
   }
 
   set canvasTarget(canvas: HTMLCanvasElement) {
@@ -42,10 +37,6 @@ export class RendererSystem {
     this.context = this.canvasElement.getContext('2d') as CanvasRenderingContext2D;
     this.canvasWidth = this.canvasElement.width;
     this.canvasHeight = this.canvasElement.height;
-  }
-
-  set animating(bool: boolean) {
-    this._animating = bool;
   }
 
   set canvasSize(dimension: DimensionModel) {
@@ -56,13 +47,14 @@ export class RendererSystem {
     this.scaling = Number((dimension.width / originalCanvasWidth).toFixed(2));
   }
 
-  animationLoop(time: number) {
-    this.animationEvent.next(time);
-    requestAnimationFrame((ev) => this.animationLoop(ev));
+  renderLoop(deltaTimeSeconds: number) {
+    this.clearCanvas();
+    this.renderActiveEntities(deltaTimeSeconds, this.entityManager.activeEntities);
   }
 
+
   clearCanvas() {
-    this.context.fillStyle = "#101010";
+    this.context.fillStyle = "#202020";
     this.context.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
   }
 
@@ -70,22 +62,29 @@ export class RendererSystem {
     this.context.fillStyle = "#ffcc00";
     for (let e of entities) {
       if (ComponentTypes.SPRITE & e.components && ComponentTypes.TRANSFORM & e.components)
-        this.renderSprites(deltaTime, e)
+        this.renderSprite(deltaTime, e)
     }
   }
 
-  renderSprites(deltaTime: Number, entity: Entity) {
+  renderTestRect(x: number, y: number, w: number, h: number) {
+    this.context.fillStyle = "#ffcc0066";
+    this.context.fillRect(x, y, w, h);
+  }
+
+  renderSprite(deltaTime: number, entity: Entity) {
     const components = this.componentManager.getComponentsForOwner(entity.id);
     const sprite = components[ComponentTypes.SPRITE] as Sprite;
     const transform = components[ComponentTypes.TRANSFORM] as Transform;
     if (sprite.ready) {
-      const scale = this.scaling * transform.scale;
-      // this.context.translate(this.canvasElement.width / 2, this.canvasElement.height / 2)
+      let scale = this.scaling * transform.scale;
+      if (components[ComponentTypes.CURSOR] && (<Cursor>components[ComponentTypes.CURSOR]).isHovering) {
+        scale *= 1.12;
+      }
       this.context.setTransform(scale, 0, 0, scale, transform.x * this.scaling, transform.y * this.scaling);
-      this.context.rotate(transform.rot+= 0.1);
-      transform.x += 1;
-      if(transform.x > this.canvasWidth) transform.x = 0;
-      this.context.drawImage(sprite.image,  (-sprite.image.width / 2), (-sprite.image.height / 2));
+      this.context.rotate(transform.rad += 2 * deltaTime);
+      // transform.x += (300 * deltaTime);
+      if (transform.x * this.scaling > this.canvasWidth) transform.x = 0;
+      this.context.drawImage(sprite.image, (-sprite.image.width / 2), (-sprite.image.height / 2));
       this.context.setTransform(1, 0, 0, 1, 0, 0);
     }
   }
