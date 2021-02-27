@@ -14,7 +14,11 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.entitySystem.createEntitiy().addComponents(
+      new Transform(100 + Math.floor(Math.random() * 700), 100 + Math.floor(Math.random() * 450), Math.floor(1 + Math.random() * 2)),
+      new Sprite("assets/game/drill.png"),
+      new Hoverable()
+    );
   }
 
   createRandomDrill() {

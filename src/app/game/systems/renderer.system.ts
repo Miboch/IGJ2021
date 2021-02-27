@@ -54,7 +54,7 @@ export class RendererSystem {
 
 
   clearCanvas() {
-    this.context.fillStyle = "#101010";
+    this.context.fillStyle = "#202020";
     this.context.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
   }
 
@@ -81,8 +81,8 @@ export class RendererSystem {
         scale *= 1.08;
       }
       this.context.setTransform(scale, 0, 0, scale, transform.x * this.scaling, transform.y * this.scaling);
-      this.context.rotate(transform.rad);
-      transform.x += (300 * deltaTime);
+      this.context.rotate(transform.rad += 2 * deltaTime);
+      // transform.x += (300 * deltaTime);
       if (transform.x * this.scaling > this.canvasWidth) transform.x = 0;
       this.context.drawImage(sprite.image, (-sprite.image.width / 2), (-sprite.image.height / 2));
       this.context.setTransform(1, 0, 0, 1, 0, 0);

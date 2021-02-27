@@ -20,7 +20,7 @@ export class Transform extends BaseComponent {
   }
 
   set rad(newRad: number) {
-    this.rot += newRad * 180 / Math.PI
+    this.rot = newRad * 180 / Math.PI
   }
 
   get deg() {

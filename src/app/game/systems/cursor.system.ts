@@ -38,43 +38,69 @@ export class CursorSystem {
 
   cursorMove(x: number, y: number) {
     this._cursorPosition = {x, y}
+    // this.markAndUnmarkHovering();
   }
 
   markAndUnmarkHovering() {
     // only allow hover on entities with both sprite and hoverable.
     let entities = this.entities.activeEntities.filter(e => ComponentTypes.HOVERABLE & e.components && ComponentTypes.SPRITE & e.components);
     entities.forEach(e => {
-      let components = this.components.getComponentsForOwner(e.id);
-      const transform = components[ComponentTypes.TRANSFORM] as Transform;
+      const components = this.components.getComponentsForOwner(e.id);
       const sprite = components[ComponentTypes.SPRITE] as Sprite;
-      const hover = components[ComponentTypes.HOVERABLE] as Hoverable;
       if (sprite.ready) {
-        const scaleFactor = transform.scale * this.render.scaling;
-        let halfWidth = (sprite.image.width / 2) * scaleFactor;
-        let halfHeight = (sprite.image.height / 2) * scaleFactor;
-        const x0 = (transform.x * this.render.scaling - halfWidth) * Math.cos(transform.rot) + (transform.y * this.render.scaling - halfHeight) * Math.sin(transform.rot);
-        const x1 = (transform.x * this.render.scaling + halfWidth) * Math.cos(transform.rot) + (transform.y * this.render.scaling + halfHeight) * Math.sin(transform.rot);
-        const y0 = -(transform.x * this.render.scaling - halfWidth) * Math.sin(transform.rot) + (transform.y * this.render.scaling - halfHeight) * Math.cos(transform.rot);
-        const y1 = -(transform.x * this.render.scaling + halfWidth) * Math.sin(transform.rot) + (transform.y * this.render.scaling + halfHeight) * Math.cos(transform.rot);
-
-        this.render.renderTestRect(x0, y0, x1 - x0, y1 - y0);
-
-
-        hover.isHovering = this._cursorPosition.x >= (x0)
-          && this._cursorPosition.x <= (x1)
-          && this._cursorPosition.y >= y0
-          && this._cursorPosition.y <= y1;
-
-
-        // const scaledWHalf = (sprite.image.width * transform.scale * this.render.scaling) / 2;
-        // const scaledHHalf = (sprite.image.height * transform.scale * this.render.scaling) / 2;
-        // hover.isHovering = this._cursorPosition.x >= (transform.x - scaledWHalf)
-        //   && this._cursorPosition.x <= (transform.x + scaledWHalf)
-        //   && this._cursorPosition.y >= (transform.y - scaledHHalf)
-        //   && this._cursorPosition.y <= (transform.y + scaledHHalf);
+        const hover = components[ComponentTypes.HOVERABLE] as Hoverable;
+        const transform = components[ComponentTypes.TRANSFORM] as Transform;
+        const scale = this.render.scaling * transform.scale;
+        const width = sprite.image.width * scale;
+        const height = sprite.image.height * scale;
+        const [topLeft, topRight, bottomLeft, bottomRight, cursor, origin] = this.extractPoints(scale, transform, width, height);
+        let tri1 = this.calcAreaOfTriangle(this.calcDistance(cursor, topLeft), this.calcDistance(topLeft, topRight), this.calcDistance(topRight, cursor)) * scale
+        let tri2 = this.calcAreaOfTriangle(this.calcDistance(cursor, topRight), this.calcDistance(topRight, bottomRight), this.calcDistance(bottomRight, cursor)) * scale
+        let tri3 = this.calcAreaOfTriangle(this.calcDistance(cursor, bottomRight), this.calcDistance(bottomRight, bottomLeft), this.calcDistance(bottomLeft, cursor)) * scale
+        let tri4 = this.calcAreaOfTriangle(this.calcDistance(cursor, bottomLeft), this.calcDistance(bottomLeft, topLeft), this.calcDistance(topLeft, cursor)) * scale
+        hover.isHovering = (tri1 + tri2 + tri3 + tri4) < width * height;
       }
-
     })
+  }
+
+  private extractPoints(scale: number, transform: Transform, width: number, height: number) {
+    const halfWidth = width / 2;
+    const halfHeight = height / 2;
+    const origin = {x: (transform.x - width / 2) * scale, y: (transform.y - height / 2) * scale};
+    const topLeft = this.rotatePoint({
+      x: (transform.x * this.render.scaling - width / 3),
+      y: (transform.y * this.render.scaling + height / 3)
+    }, origin, transform.rad);
+    const topRight = this.rotatePoint({
+      x: transform.x * this.render.scaling + width / 3,
+      y: (transform.y * this.render.scaling + height / 3)
+    }, origin, transform.rad);
+    const bottomLeft = this.rotatePoint({
+      x: (transform.x * this.render.scaling - width / 3),
+      y: transform.y * this.render.scaling - height / 3
+    }, origin, transform.rad);
+    const bottomRight = this.rotatePoint({
+      x: transform.x * this.render.scaling + width / 3,
+      y: transform.y * this.render.scaling - height / 3
+    }, origin, transform.rad);
+    const cursor = this.rotatePoint(this._cursorPosition, origin, transform.rad);
+    return [topLeft, topRight, bottomLeft, bottomRight, cursor, origin];
+  }
+
+  private rotatePoint(point: { x: number, y: number }, origin: { x: number, y: number }, radians: number) {
+    const newPoint = {x: point.x - origin.x, y: point.y - origin.x}
+    newPoint.x = (point.x * Math.cos(radians) - point.y * Math.sin(radians)) + origin.x;
+    newPoint.y = (point.y * Math.cos(radians) + point.x * Math.sin(radians)) + origin.y;
+    return newPoint;
+  }
+
+  calcDistance(p1: { x: number, y: number } | any, p2: { x: number, y: number } | any) {
+    return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+  }
+
+  calcAreaOfTriangle(dist1: number, dist2: number, dist3: number) {
+    let s = (dist1 + dist2 + dist3) / 2;
+    return Math.sqrt(s * (s - dist1) * (s - dist2) * (s - dist3));
   }
 
 
