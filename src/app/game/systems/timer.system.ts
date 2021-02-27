@@ -6,7 +6,6 @@ import {filter, switchMap, tap} from 'rxjs/operators';
 export class TimerSystem {
   private _paused = false;
   private _firstInitializing = true;
-  private timerMap: { [t: string]: Observable<number> } = {};
   private timerSubject: Subject<number> = new Subject<number>();
 
 
@@ -19,26 +18,19 @@ export class TimerSystem {
    * be possible
    * @param updatesPrSec
    */
-  getWithUPS(updatesPrSec: number) {
-    // we add the observables to a timer map so we don't create more observables than necessary, so things on
-    // the same UpdatesPerSecond run on the same observables.
-    let exists = Boolean(this.timerMap[String(updatesPrSec)]);
-    if (!exists) {
-      // create a function closure to keep track of lastFrame and delta
-      this.timerMap[String(updatesPrSec)] = (() => {
-        let lastFrame = 0;
-        let delta = 0;
-        return this.timerSubject.asObservable().pipe(switchMap(frameTime => {
-            delta += !this._paused ? frameTime - lastFrame : 0;
-            lastFrame = frameTime;
-            return of(Number((delta / 1000).toFixed(2)));
-          }),
-          filter(_ => delta > (1000 / updatesPrSec) && !this._paused),
-          tap(_ => delta = 0)
-        );
-      })();
-    }
-    return this.timerMap[String(updatesPrSec)];
+  getWithUPS(updatesPrSec: number): Observable<number> {
+    return (() => {
+      let lastFrame = 0;
+      let delta = 0;
+      return this.timerSubject.asObservable().pipe(switchMap(frameTime => {
+          delta += !this._paused ? frameTime - lastFrame : 0;
+          lastFrame = frameTime;
+          return of(Number((delta / 1000).toFixed(2)));
+        }),
+        filter(_ => delta > (1000 / updatesPrSec) && !this._paused),
+        tap(_ => delta = 0)
+      );
+    })();
   }
 
   set pause(p: boolean) {

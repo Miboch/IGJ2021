@@ -64,13 +64,9 @@ export class TestPageComponent implements OnInit {
   }
 
   updateExampleProp() {
-
-
     let exampleValue = "********************************".split("").map(star => {
       return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
     }).join('');
-
-
     this.store.dispatch(gameAction.assignState({overwrite: {exampleProperty: exampleValue}}))
   }
 
@@ -85,13 +81,6 @@ export class TestPageComponent implements OnInit {
           lastUpdated: new Date()
         }
     }));
-
   }
-
-
-  handleClick(event: any) {
-    console.log(event);
-  }
-
 
 }
