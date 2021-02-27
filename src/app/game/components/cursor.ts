@@ -1,11 +1,11 @@
 ﻿import {BaseComponent} from './base-component';
 import {ComponentTypes} from './component-types';
 
-export class Hoverable extends BaseComponent {
+export class Cursor extends BaseComponent {
   private _isHovering = false;
 
   constructor() {
-    super(ComponentTypes.HOVERABLE);
+    super(ComponentTypes.CURSOR);
   }
 
   set isHovering(hoverState: boolean) {

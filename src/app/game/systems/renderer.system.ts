@@ -9,7 +9,7 @@ import {ComponentManagerSystem} from './component-manager.system';
 import {Sprite} from '../components/sprite';
 import {Transform} from '../components/transform';
 import {TimerSystem} from './timer.system';
-import {Hoverable} from '../components/hoverable';
+import {Cursor} from '../components/cursor';
 
 const originalCanvasWidth = 990;
 
@@ -77,8 +77,8 @@ export class RendererSystem {
     const transform = components[ComponentTypes.TRANSFORM] as Transform;
     if (sprite.ready) {
       let scale = this.scaling * transform.scale;
-      if (components[ComponentTypes.HOVERABLE] && (<Hoverable>components[ComponentTypes.HOVERABLE]).isHovering) {
-        scale *= 1.08;
+      if (components[ComponentTypes.CURSOR] && (<Cursor>components[ComponentTypes.CURSOR]).isHovering) {
+        scale *= 1.12;
       }
       this.context.setTransform(scale, 0, 0, scale, transform.x * this.scaling, transform.y * this.scaling);
       this.context.rotate(transform.rad += 2 * deltaTime);

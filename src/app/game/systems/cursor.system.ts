@@ -1,13 +1,14 @@
 ﻿import {Injectable} from '@angular/core';
 import {EntityManagerSystem} from './entity-manager.system';
 import {TimerSystem} from './timer.system';
-import {Subscription} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
 import {ComponentTypes} from '../components/component-types';
 import {ComponentManagerSystem} from './component-manager.system';
 import {Transform} from '../components/transform';
 import {Sprite} from '../components/sprite';
-import {Hoverable} from '../components/hoverable';
 import {RendererSystem} from './renderer.system';
+import {Cursor} from '../components/cursor';
+import {Entity} from '../entities/entity';
 
 @Injectable({providedIn: 'root'})
 export class CursorSystem {
@@ -15,6 +16,8 @@ export class CursorSystem {
   private _cursorPosition: { x: number, y: number } = {x: 9000, y: 9000};
   private internalSubscription: Subscription;
   private updatesPerSecond = 60;
+  private clickedEntities: Subject<Entity[]> = new Subject<Entity[]>();
+
 
   constructor(private entities: EntityManagerSystem,
               private timer: TimerSystem,
@@ -28,27 +31,38 @@ export class CursorSystem {
   set attachedElement(element: HTMLElement) {
     if (this._attachedElement) {
       this._attachedElement.onmousemove = null;
+      this._attachedElement.onclick = null;
     }
     this._attachedElement = element;
     this._attachedElement.onmousemove = (event) => {
       let target = (<HTMLElement>event.target).getBoundingClientRect() as DOMRect;
       this.cursorMove(event.clientX - target.x, event.clientY - target.y)
     }
+    this._attachedElement.onclick = (click) => {
+      click.preventDefault();
+      const clicked = this.entities.activeEntities.filter(e =>
+        ComponentTypes.CURSOR & e.components
+        && this.components.getComponentsForOwner(e.id)[ComponentTypes.CURSOR].isHovering)
+      this.clickedEntities.next(clicked);
+    }
+  }
+
+  listenForClickedEntities() {
+    return this.clickedEntities.asObservable();
   }
 
   cursorMove(x: number, y: number) {
     this._cursorPosition = {x, y}
-    // this.markAndUnmarkHovering();
   }
 
-  markAndUnmarkHovering() {
+  private markAndUnmarkHovering() {
     // only allow hover on entities with both sprite and hoverable.
-    let entities = this.entities.activeEntities.filter(e => ComponentTypes.HOVERABLE & e.components && ComponentTypes.SPRITE & e.components);
+    let entities = this.entities.activeEntities.filter(e => ComponentTypes.CURSOR & e.components && ComponentTypes.SPRITE & e.components);
     entities.forEach(e => {
       const components = this.components.getComponentsForOwner(e.id);
       const sprite = components[ComponentTypes.SPRITE] as Sprite;
       if (sprite.ready) {
-        const hover = components[ComponentTypes.HOVERABLE] as Hoverable;
+        const hover = components[ComponentTypes.CURSOR] as Cursor;
         const transform = components[ComponentTypes.TRANSFORM] as Transform;
         const scale = this.render.scaling * transform.scale;
         const width = sprite.image.width * scale;
