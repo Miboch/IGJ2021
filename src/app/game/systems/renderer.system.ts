@@ -71,6 +71,25 @@ export class RendererSystem {
     this.context.fillRect(x, y, w, h);
   }
 
+  renderPoint(x: number, y: number, colour = "#ffcc00") {
+    this.context.fillStyle = colour;
+    this.context.fillRect(x,y,10,10);
+  }
+
+  renderText(text: string) {
+    this.context.fillText(text, 10, 10);
+  }
+
+  drawVert(from: {x: number, y: number}, to: {x: number, y: number}) {
+    this.context.strokeStyle = "#ffcc00"
+    this.context.beginPath();
+    this.context.moveTo(from.x, from.y);
+    this.context.lineTo(to.x, to.y);
+    this.context.stroke();
+    this.context.closePath();
+}
+
+
   renderSprite(deltaTime: number, entity: Entity) {
     const components = this.componentManager.getComponentsForOwner(entity.id);
     const sprite = components[ComponentTypes.SPRITE] as Sprite;
@@ -81,9 +100,6 @@ export class RendererSystem {
         scale *= 1.12;
       }
       this.context.setTransform(scale, 0, 0, scale, transform.x * this.scaling, transform.y * this.scaling);
-      this.context.rotate(transform.rad += 2 * deltaTime);
-      // transform.x += (300 * deltaTime);
-      if (transform.x * this.scaling > this.canvasWidth) transform.x = 0;
       this.context.drawImage(sprite.image, (-sprite.image.width / 2), (-sprite.image.height / 2));
       this.context.setTransform(1, 0, 0, 1, 0, 0);
     }

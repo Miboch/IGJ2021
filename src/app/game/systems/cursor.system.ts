@@ -52,7 +52,8 @@ export class CursorSystem {
   }
 
   cursorMove(x: number, y: number) {
-    this._cursorPosition = {x, y}
+    this._cursorPosition.x = x;
+    this._cursorPosition.y = y;
   }
 
   private markAndUnmarkHovering() {
@@ -64,47 +65,50 @@ export class CursorSystem {
       if (sprite.ready) {
         const hover = components[ComponentTypes.CURSOR] as Cursor;
         const transform = components[ComponentTypes.TRANSFORM] as Transform;
-        const scale = this.render.scaling * transform.scale;
+        const scale = transform.scale * this.render.scaling;
         const width = sprite.image.width * scale;
         const height = sprite.image.height * scale;
-        const [topLeft, topRight, bottomLeft, bottomRight, cursor, origin] = this.extractPoints(scale, transform, width, height);
-        let tri1 = this.calcAreaOfTriangle(this.calcDistance(cursor, topLeft), this.calcDistance(topLeft, topRight), this.calcDistance(topRight, cursor)) * scale
-        let tri2 = this.calcAreaOfTriangle(this.calcDistance(cursor, topRight), this.calcDistance(topRight, bottomRight), this.calcDistance(bottomRight, cursor)) * scale
-        let tri3 = this.calcAreaOfTriangle(this.calcDistance(cursor, bottomRight), this.calcDistance(bottomRight, bottomLeft), this.calcDistance(bottomLeft, cursor)) * scale
-        let tri4 = this.calcAreaOfTriangle(this.calcDistance(cursor, bottomLeft), this.calcDistance(bottomLeft, topLeft), this.calcDistance(topLeft, cursor)) * scale
-        hover.isHovering = (tri1 + tri2 + tri3 + tri4) < width * height;
+        const [topLeft, topRight, bottomLeft, bottomRight, cursor] = this.extractPoints(transform, width, height);
+        const tri1 = this.calcAreaOfTriangle(
+          this.calcDistance(cursor, topLeft),
+          this.calcDistance(topLeft, topRight),
+          this.calcDistance(topRight, cursor)
+        );
+        const tri2 = this.calcAreaOfTriangle(
+          this.calcDistance(cursor, topRight),
+          this.calcDistance(topRight, bottomRight),
+          this.calcDistance(bottomRight, cursor)
+        );
+        const tri3 = this.calcAreaOfTriangle(
+          this.calcDistance(cursor, bottomRight),
+          this.calcDistance(bottomRight, bottomLeft),
+          this.calcDistance(bottomLeft, cursor)
+        );
+        const tri4 = this.calcAreaOfTriangle(
+          this.calcDistance(cursor, bottomLeft),
+          this.calcDistance(bottomLeft, topLeft),
+          this.calcDistance(topLeft, cursor)
+        );
+        hover.isHovering = Math.floor(tri1 + tri2 + tri3 + tri4) <= width * height;
       }
     })
   }
 
-  private extractPoints(scale: number, transform: Transform, width: number, height: number) {
+  private extractPoints(transform: Transform, width: number, height: number) {
     const halfWidth = width / 2;
     const halfHeight = height / 2;
-    const origin = {x: (transform.x - width / 2) * scale, y: (transform.y - height / 2) * scale};
-    const topLeft = this.rotatePoint({
-      x: (transform.x * this.render.scaling - width / 3),
-      y: (transform.y * this.render.scaling + height / 3)
-    }, origin, transform.rad);
-    const topRight = this.rotatePoint({
-      x: transform.x * this.render.scaling + width / 3,
-      y: (transform.y * this.render.scaling + height / 3)
-    }, origin, transform.rad);
-    const bottomLeft = this.rotatePoint({
-      x: (transform.x * this.render.scaling - width / 3),
-      y: transform.y * this.render.scaling - height / 3
-    }, origin, transform.rad);
-    const bottomRight = this.rotatePoint({
-      x: transform.x * this.render.scaling + width / 3,
-      y: transform.y * this.render.scaling - height / 3
-    }, origin, transform.rad);
-    const cursor = this.rotatePoint(this._cursorPosition, origin, transform.rad);
-    return [topLeft, topRight, bottomLeft, bottomRight, cursor, origin];
+    const origin = {x: transform.x * this.render.scaling, y: transform.y * this.render.scaling};
+    const topLeft = this.rotatePoint({x: origin.x - halfWidth, y: origin.y - halfHeight}, origin, transform.rad);
+    const topRight = this.rotatePoint({x: origin.x + halfWidth, y: origin.y - halfHeight}, origin, transform.rad);
+    const bottomLeft = this.rotatePoint({x: origin.x - halfWidth, y: origin.y + halfHeight}, origin, transform.rad);
+    const bottomRight = this.rotatePoint({x: origin.x + halfWidth, y: origin.y + halfHeight}, origin, transform.rad);
+    return [topLeft, topRight, bottomLeft, bottomRight, this._cursorPosition];
   }
 
   private rotatePoint(point: { x: number, y: number }, origin: { x: number, y: number }, radians: number) {
-    const newPoint = {x: point.x - origin.x, y: point.y - origin.x}
-    newPoint.x = (point.x * Math.cos(radians) - point.y * Math.sin(radians)) + origin.x;
-    newPoint.y = (point.y * Math.cos(radians) + point.x * Math.sin(radians)) + origin.y;
+    const newPoint = {x: 0, y: 0};
+    newPoint.x = Math.cos(radians) * (point.x - origin.x) - Math.sin(radians) * (point.y - origin.y) + origin.x;
+    newPoint.y = Math.sin(radians) * (point.x - origin.x) + Math.cos(radians) * (point.y - origin.y) + origin.y;
     return newPoint;
   }
 
