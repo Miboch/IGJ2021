@@ -6,5 +6,6 @@ export class PowerGenerator extends BaseComponent {
 
   constructor(generateValue = 0) {
     super(ComponentTypes.POWER_GENERATOR);
+    this.generationValue = generateValue;
   }
 }
