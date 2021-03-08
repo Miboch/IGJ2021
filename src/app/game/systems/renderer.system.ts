@@ -1,6 +1,6 @@
 ﻿import {Injectable} from '@angular/core';
-import {of, Subject, Subscription} from 'rxjs';
-import {filter, switchMap} from 'rxjs/operators';
+import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
 import {DimensionModel} from '../angular/models/dimension.model';
 import {EntityManagerSystem} from './entity-manager.system';
 import {Entity} from '../entities/entity';
@@ -60,16 +60,43 @@ export class RendererSystem {
 
   renderActiveEntities(deltaTime: number, entities: Entity[]) {
     this.context.fillStyle = "#ffcc00";
+    const nonHoveringEntities = [];
+    const hoveringEntities = [];
     for (let e of entities) {
-      if (ComponentTypes.SPRITE & e.components && ComponentTypes.TRANSFORM & e.components)
-        this.renderSprite(deltaTime, e)
+      if ((ComponentTypes.SPRITE + ComponentTypes.TRANSFORM) & e.components) {
+        let comps = this.componentManager.getComponentsForOwner(e.id);
+        ComponentTypes.CURSOR & e.components && (<Cursor>comps[ComponentTypes.CURSOR]).isHovering
+          ? hoveringEntities.push(e)
+          : nonHoveringEntities.push(e);
+      }
     }
+    nonHoveringEntities.forEach(e => this.renderSprite(deltaTime, e));
+    hoveringEntities.forEach(e => this.renderSprite(deltaTime, e));
   }
 
   renderTestRect(x: number, y: number, w: number, h: number) {
     this.context.fillStyle = "#ffcc0066";
     this.context.fillRect(x, y, w, h);
   }
+
+  renderPoint(x: number, y: number, colour = "#ffcc00") {
+    this.context.fillStyle = colour;
+    this.context.fillRect(x, y, 10, 10);
+  }
+
+  renderText(text: string) {
+    this.context.fillText(text, 10, 10);
+  }
+
+  drawVert(from: { x: number, y: number }, to: { x: number, y: number }) {
+    this.context.strokeStyle = "#ffcc00"
+    this.context.beginPath();
+    this.context.moveTo(from.x, from.y);
+    this.context.lineTo(to.x, to.y);
+    this.context.stroke();
+    this.context.closePath();
+  }
+
 
   renderSprite(deltaTime: number, entity: Entity) {
     const components = this.componentManager.getComponentsForOwner(entity.id);
@@ -81,9 +108,6 @@ export class RendererSystem {
         scale *= 1.12;
       }
       this.context.setTransform(scale, 0, 0, scale, transform.x * this.scaling, transform.y * this.scaling);
-      this.context.rotate(transform.rad += 2 * deltaTime);
-      // transform.x += (300 * deltaTime);
-      if (transform.x * this.scaling > this.canvasWidth) transform.x = 0;
       this.context.drawImage(sprite.image, (-sprite.image.width / 2), (-sprite.image.height / 2));
       this.context.setTransform(1, 0, 0, 1, 0, 0);
     }

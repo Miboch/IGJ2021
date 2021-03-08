@@ -5,6 +5,8 @@ import {Sprite} from '../../../../game/components/sprite';
 import {Cursor} from '../../../../game/components/cursor';
 import {CursorSystem} from '../../../../game/systems/cursor.system';
 import {ToastService} from '../../../../ui/services/toast-service';
+import {PowerGenerator} from '../../../../game/components/power-generator';
+import {PowerGeneratorSystem} from '../../../../game/systems/power-generator.system';
 
 @Component({
   templateUrl: './game.component.html',
@@ -12,29 +14,19 @@ import {ToastService} from '../../../../ui/services/toast-service';
 })
 
 export class GameComponent implements OnInit {
-  constructor(private entitySystem: EntityManagerSystem, private cursor: CursorSystem, private toast: ToastService) {
+  constructor(private entitySystem: EntityManagerSystem, private cursor: CursorSystem, private toast: ToastService, private power: PowerGeneratorSystem) {
   }
 
   ngOnInit(): void {
-    this.entitySystem.createEntitiy().addComponents(
-      new Transform(100 + Math.floor(Math.random() * 700), 100 + Math.floor(Math.random() * 450), Math.floor(1 + Math.random() * 2)),
-      new Sprite("assets/game/drill.png"),
-      new Cursor()
-    );
-
-    this.cursor.listenForClickedEntities().subscribe(clicked => {
-      clicked.forEach(e => {
-        this.toast.success(`clicked entitiy ${e.id}`, 'Click Detected')
-      })
-    });
-
+    this.createRandomDrill();
   }
 
   createRandomDrill() {
     this.entitySystem.createEntitiy().addComponents(
-      new Transform(100 + Math.floor(Math.random() * 700), 100 + Math.floor(Math.random() * 450), Math.floor(1 + Math.random() * 2)),
+      new Transform(100 + Math.floor(Math.random() * 700), 100 + Math.floor(Math.random() * 450), Math.floor(1 + Math.random() * 0.5)),
       new Sprite("assets/game/drill.png"),
-      new Cursor()
+      new Cursor(),
+      new PowerGenerator(5)
     );
   }
 

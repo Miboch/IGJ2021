@@ -63,24 +63,25 @@ export class TestPageComponent implements OnInit {
     this.store.dispatch(gameAction.assignState({overwrite: {lastUpdated: new Date()}}))
   }
 
+  // irrelevant now
   updateExampleProp() {
-    let exampleValue = "********************************".split("").map(star => {
-      return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
-    }).join('');
-    this.store.dispatch(gameAction.assignState({overwrite: {exampleProperty: exampleValue}}))
+    // let exampleValue = "********************************".split("").map(star => {
+    //   return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
+    // }).join('');
+    // this.store.dispatch(gameAction.assignState({overwrite: {exampleProperty: exampleValue}}))
   }
 
   updateBoth() {
-    let exampleValue = "********************************".split("").map(star => {
-      return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
-    }).join('');
-    this.store.dispatch(gameAction.assignState({
-      overwrite:
-        {
-          exampleProperty: exampleValue,
-          lastUpdated: new Date()
-        }
-    }));
+    // let exampleValue = "********************************".split("").map(star => {
+    //   return "abcdefghijklmnopqrstuvwxyz".split('')[Math.floor(Math.random() * 26)]
+    // }).join('');
+    // this.store.dispatch(gameAction.assignState({
+    //   overwrite:
+    //     {
+    //       exampleProperty: exampleValue,
+    //       lastUpdated: new Date()
+    //     }
+    // }));
   }
 
 }

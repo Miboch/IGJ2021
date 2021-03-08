@@ -1,5 +1,4 @@
-﻿
-import {Action, createReducer, on} from '@ngrx/store';
+﻿import {Action, createReducer, on} from '@ngrx/store';
 import * as gameActions from '../actions/game-state.actions';
 import {SaveStateModel} from '../../models/state/save-state.model';
 
@@ -14,7 +13,12 @@ import {SaveStateModel} from '../../models/state/save-state.model';
  */
 export const defaultGameState: SaveStateModel = {
   lastUpdated: new Date(),
-  exampleProperty: "This is just an example"
+  ore: 0,
+  energy: 0,
+  drills: 0,
+  satellites: 0,
+  drillFactories: 0,
+  satelliteFactories: 0
 }
 
 /**
@@ -29,7 +33,9 @@ const gameReducer = createReducer(
     const newState = {...state} // sets previous properties
     Object.assign(newState, overwrite);
     return newState;
-  })
+  }),
+  on(gameActions.addEnergy, (state, { energy }) => ({ ...state, energy: state.energy + energy })),
+  on(gameActions.addOre, (state, { ore }) => ({ ...state, ore: state.ore + ore }))
 );
 
 export function gameStateReducer(state: SaveStateModel | undefined = defaultGameState, action: Action) {

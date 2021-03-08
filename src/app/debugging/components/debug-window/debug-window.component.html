@@ -2,8 +2,10 @@
 
   <fieldset>
     <legend>Resource</legend>
-    <button class="btn">Add 10000 Power</button>
-    <button class="btn">Add 10000 Ore</button>
+    <button class="btn" (click)="addEnergy(1)">Add 1 Energy</button>
+    <button class="btn" (click)="addOre(1)">Add 1 Ore</button>
+    <button class="btn" (click)="addEnergy(10000)">Add 10000 Energy</button>
+    <button class="btn" (click)="addOre(10000)">Add 10000 Ore</button>
   </fieldset>
   <fieldset>
     <legend>Events</legend>
